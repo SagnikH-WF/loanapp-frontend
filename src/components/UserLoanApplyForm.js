@@ -61,7 +61,7 @@ const LoanApplyForm = () => {
 		// setSelectedMake(itemMakes[0]);
 	};
 
-	const updateSelectedCategory = (e) => {
+	const handleSelectedCategoryChange = (e) => {
 		console.log("currently selected category", e.target.value);
 		setSelectedCategory(e.target.value);
 
@@ -81,7 +81,7 @@ const LoanApplyForm = () => {
         }
 	}, [selectedMake]);
 
-	const updateSelectedMake = (e) => {
+	const handleSelectedMakeChange = (e) => {
 		console.log("currently selected make", e.target.value);
 		setSelectedMake(e.target.value);
 
@@ -125,7 +125,7 @@ const LoanApplyForm = () => {
 				<input id="id" type="text" />				                
 				
 				<label htmlFor="categ">Item Category:</label>
-				<select id="categ" onChange={updateSelectedCategory}>
+				<select id="categ" onChange={handleSelectedCategoryChange}>
 					<option disabled selected>
 						Please Select a Value
 					</option>
@@ -135,7 +135,7 @@ const LoanApplyForm = () => {
 				</select>
 
 				<label htmlFor="make">Item Make:</label>
-				<select id="make" onChange={updateSelectedMake}>
+				<select id="make" onChange={handleSelectedMakeChange}>
 					<option disabled selected>
 						Please Select a Value
 					</option>
