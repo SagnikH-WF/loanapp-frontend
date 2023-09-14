@@ -36,6 +36,9 @@ const LoanApplyForm = () => {
 
 	useEffect(() => {
 		console.log("Selected category in useEffect", selectedCategory);
+        setItemMakes([]);
+        setItems([]);
+        setItemValue("");
 		getAllMakes();
 	}, [selectedCategory]);
 
@@ -61,18 +64,29 @@ const LoanApplyForm = () => {
 	const updateSelectedCategory = (e) => {
 		console.log("currently selected category", e.target.value);
 		setSelectedCategory(e.target.value);
+
+        //changing drop down
+        document.getElementById("make").selectedIndex = 0;
+        document.getElementById("description").selectedIndex = 0;
 	};
 
 	useEffect(() => {
 		console.log("selected make useEffect", selectedMake);
 		if (selectedMake) {
+            setItems([]);
+            setItemValue("");
 			getAllItems();
-		}
+		} else {
+            setItems([]); //janina ki hoche
+        }
 	}, [selectedMake]);
 
 	const updateSelectedMake = (e) => {
 		console.log("currently selected make", e.target.value);
 		setSelectedMake(e.target.value);
+
+        //changing description drop down
+        document.getElementById("description").selectedIndex = 0;
 	};
 
 	const getAllItems = async () => {
@@ -108,7 +122,29 @@ const LoanApplyForm = () => {
 
 			<form>
 				<label htmlFor="id">Employee Id:</label>
-				<input id="id" type="text" />
+				<input id="id" type="text" />				                
+				
+				<label htmlFor="categ">Item Category:</label>
+				<select id="categ" onChange={updateSelectedCategory}>
+					<option disabled selected>
+						Please Select a Value
+					</option>
+					{itemCategories.map((itemCategory) => (
+						<option value={itemCategory}>{itemCategory}</option>
+					))}
+				</select>
+
+				<label htmlFor="make">Item Make:</label>
+				<select id="make" onChange={updateSelectedMake}>
+					<option disabled selected>
+						Please Select a Value
+					</option>
+					{itemMakes.map((itemMake) => (
+						<option value={itemMake}>{itemMake}</option>
+					))}
+				</select>
+
+                <label htmlFor="description">Item Description:</label>
 				<select id="description" onChange={handleItemDescriptionChange}>
 					<option disabled selected>
 						Please Select a Value
@@ -121,26 +157,10 @@ const LoanApplyForm = () => {
 						);
 					})}
 				</select>
-				<label htmlFor="val">Item value:</label>
+
+                <label htmlFor="val">Item value:</label>
 				{itemValue}
-				<label htmlFor="categ">Item category:</label>
-				<select id="categ" onChange={updateSelectedCategory}>
-					<option disabled selected>
-						Please Select a Value
-					</option>
-					{itemCategories.map((itemCategory) => (
-						<option value={itemCategory}>{itemCategory}</option>
-					))}
-				</select>
-				<label htmlFor="make">Item make:</label>
-				<select id="make" onChange={updateSelectedMake}>
-					<option disabled selected>
-						Please Select a Value
-					</option>
-					{itemMakes.map((itemMake) => (
-						<option value={itemMake}>{itemMake}</option>
-					))}
-				</select>
+                
 				<br></br>
 				<button type="submit">Apply Loan</button>
 			</form>
