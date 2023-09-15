@@ -109,7 +109,27 @@ const LoanApplyForm = () => {
 	const handleItemDescriptionChange = (e) => {
 		setItemValue(items[e.target.selectedIndex - 1].itemValuation);
 		setItemDescription(e.target.value);
+		// console.log(e.target);
 	};
+
+	const handleSubmitApplyLoan = async (e) => {
+		e.preventDefault();
+		let requestBody = {
+			"employeeId": "E1", //get from session storage
+			"itemCategory": selectedCategory,
+			"itemDescription": itemDescription,
+			"itemValuation": itemValue,
+			"itemMake": selectedMake
+		}
+		console.log(requestBody);
+
+		try {
+			const response = await axios.post(`http://localhost:8090/applyLoan`, requestBody);
+			console.log(response);
+		} catch(e) {
+			console.log("Error", e);
+		}
+	}
 
 	//TODO: handle when there is no make for specific category
 
@@ -120,7 +140,7 @@ const LoanApplyForm = () => {
 			<h1>Select product and Apply for loan</h1>
 			<br />
 
-			<form>
+			<form onSubmit={handleSubmitApplyLoan}>
 				<label htmlFor="id">Employee Id:</label>
 				<input id="id" type="text" />				                
 				
@@ -151,7 +171,7 @@ const LoanApplyForm = () => {
 					</option>
 					{items.map((val, idx) => {
 						return (
-							<option value={val} key={idx}>
+							<option value={val.itemDescription} key={idx}>
 								{val.itemDescription}
 							</option>
 						);
