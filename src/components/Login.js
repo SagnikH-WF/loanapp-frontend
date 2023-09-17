@@ -22,6 +22,8 @@ function LoginPage() {
       const response = await axios.post('http://localhost:8090/employee/login', requestData);
       console.log(response);
       sessionStorage.setItem("employeeId", response.data.employeeId);
+      sessionStorage.setItem("designation", response.data.designation);
+      sessionStorage.setItem("department", response.data.department);
       // Assuming a successful login returns a token
      // const token = response.data.token;
       // Store the token in local storage or a secure cookie

@@ -29,13 +29,13 @@ const LoanList = () => {
 			<h1 className="heading">Loan Cards Availed</h1>
 			<div className="employee-info">
 				<p>
-					<strong>Employee ID:</strong> 12345
+					<strong>Employee ID:</strong> {sessionStorage.getItem("employeeId")}
 				</p>
 				<p>
-					<strong>Designation:</strong> Senior Developer
+					<strong>Designation:</strong> {sessionStorage.getItem("designation")}
 				</p>
 				<p>
-					<strong>Department:</strong> IT
+					<strong>Department:</strong> {sessionStorage.getItem("department")}
 				</p>
 			</div>
 			<table className="loan-table">

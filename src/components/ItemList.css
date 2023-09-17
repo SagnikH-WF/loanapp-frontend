@@ -1,0 +1,65 @@
+/* itemList.css */
+
+.item-list-container {
+  text-align: center;
+  margin: 20px auto; /* Add margin to create a gap */
+  max-width: 800px; /* Adjust the maximum width as needed */
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 60px; /* Reduce the margin for a smaller gap */
+}
+
+.employee-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px; /* Increase the margin for a larger gap */
+  padding: 10px; /* Add padding for additional spacing within the employee details */
+  border: 1px solid #ddd; /* Add a border for visual separation */
+  border-radius: 5px; /* Add rounded corners to the employee details */
+}
+
+.employee-info p {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+}
+
+.item-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.item-table th, .item-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.item-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light grey background for even rows */
+}
+
+.item-table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* White background for odd rows */
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .item-list-container {
+    padding: 10px;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .employee-info {
+    font-size: 14px;
+  }
+
+  .item-table th, .item-table td {
+    font-size: 14px;
+  }
+}
