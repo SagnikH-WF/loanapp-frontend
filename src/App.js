@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import UserApplyLoanForm from './components/UserLoanApplyForm'
+import LoanList from './components/LoanList';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -14,7 +16,9 @@ function App() {
                 <Route path="/" exact element={<Home isLoggedIn={isLoggedIn} />} />                                    
                 <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />                                    
                 <Route path="/register" element={<Register />} />                    
-                <Route path="/dashboard" element={<Dashboard />} />                    
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/applyLoan" element={<UserApplyLoanForm />} />
+                <Route path="/viewLoans" element={<LoanList />} />
             </Routes>
         </Router>
     );

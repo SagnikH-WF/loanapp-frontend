@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./UserLoanApplyForm.css";
 
@@ -12,8 +13,12 @@ const LoanApplyForm = () => {
 	const [selectedMake, setSelectedMake] = useState("");
 	const [items, setItems] = useState([]);
 
+	const navigate = useNavigate();
+
 	useEffect(() => {
+		setEmployeeId(sessionStorage.getItem("employeeId"));
 		fetchItemCategories();
+		console.log(sessionStorage.getItem("employeeId"));
 	}, []);
 
 	const fetchItemCategories = async () => {
@@ -36,9 +41,9 @@ const LoanApplyForm = () => {
 
 	useEffect(() => {
 		console.log("Selected category in useEffect", selectedCategory);
-        setItemMakes([]);
-        setItems([]);
-        setItemValue("");
+		setItemMakes([]);
+		setItems([]);
+		setItemValue("");
 		getAllMakes();
 	}, [selectedCategory]);
 
@@ -65,28 +70,28 @@ const LoanApplyForm = () => {
 		console.log("currently selected category", e.target.value);
 		setSelectedCategory(e.target.value);
 
-        //changing drop down
-        document.getElementById("make").selectedIndex = 0;
-        document.getElementById("description").selectedIndex = 0;
+		//changing drop down
+		document.getElementById("make").selectedIndex = 0;
+		document.getElementById("description").selectedIndex = 0;
 	};
 
 	useEffect(() => {
 		console.log("selected make useEffect", selectedMake);
 		if (selectedMake) {
-            setItems([]);
-            setItemValue("");
+			setItems([]);
+			setItemValue("");
 			getAllItems();
 		} else {
-            setItems([]); //janina ki hoche
-        }
+			setItems([]); //janina ki hoche
+		}
 	}, [selectedMake]);
 
 	const handleSelectedMakeChange = (e) => {
 		console.log("currently selected make", e.target.value);
 		setSelectedMake(e.target.value);
 
-        //changing description drop down
-        document.getElementById("description").selectedIndex = 0;
+		//changing description drop down
+		document.getElementById("description").selectedIndex = 0;
 	};
 
 	const getAllItems = async () => {
@@ -115,21 +120,27 @@ const LoanApplyForm = () => {
 	const handleSubmitApplyLoan = async (e) => {
 		e.preventDefault();
 		let requestBody = {
-			"employeeId": "E1", //get from session storage
-			"itemCategory": selectedCategory,
-			"itemDescription": itemDescription,
-			"itemValuation": itemValue,
-			"itemMake": selectedMake
-		}
+			employeeId: employeeId, //get from session storage
+			itemCategory: selectedCategory,
+			itemDescription: itemDescription,
+			itemValuation: itemValue,
+			itemMake: selectedMake,
+		};
 		console.log(requestBody);
 
 		try {
-			const response = await axios.post(`http://localhost:8090/applyLoan`, requestBody);
+			const response = await axios.post(
+				`http://localhost:8090/applyLoan`,
+				requestBody
+			);
 			console.log(response);
-		} catch(e) {
+
+			alert(response.data); //TODO: put a more meaningful message (update message from backend)
+			navigate("/dashboard");
+		} catch (e) {
 			console.log("Error", e);
 		}
-	}
+	};
 
 	//TODO: handle when there is no make for specific category
 
@@ -141,9 +152,9 @@ const LoanApplyForm = () => {
 			<br />
 
 			<form onSubmit={handleSubmitApplyLoan}>
-				<label htmlFor="id">Employee Id:</label>
-				<input id="id" type="text" />				                
-				
+				<label htmlFor="defaultInput">Employee Id:</label>
+				<div class="defaultInput">{employeeId}</div>
+
 				<label htmlFor="categ">Item Category:</label>
 				<select id="categ" onChange={handleSelectedCategoryChange}>
 					<option disabled selected>
@@ -164,7 +175,7 @@ const LoanApplyForm = () => {
 					))}
 				</select>
 
-                <label htmlFor="description">Item Description:</label>
+				<label htmlFor="description">Item Description:</label>
 				<select id="description" onChange={handleItemDescriptionChange}>
 					<option disabled selected>
 						Please Select a Value
@@ -178,9 +189,9 @@ const LoanApplyForm = () => {
 					})}
 				</select>
 
-                <label htmlFor="val">Item value:</label>
-				{itemValue}
-                
+        <label htmlFor="defaultInput">Item value:</label>
+				<div class="defaultInput">{itemValue}</div>
+
 				<br></br>
 				<button type="submit">Apply Loan</button>
 			</form>
