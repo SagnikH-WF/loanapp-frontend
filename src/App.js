@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route,Link } from 'react-router-dom';
-import Home from './home';
-import Login from './login';
-import Register from './register';
-import Dashboard from './dashboard';
+import Home from "./components/Home";
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,18 +11,10 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" exact>
-                    <Home isLoggedIn={isLoggedIn} />
-                </Route>
-                <Route path="/login">
-                    <Login setIsLoggedIn={setIsLoggedIn} />
-                </Route>
-                <Route path="/register">
-                    <Register />
-                </Route>
-                <Route path="/dashboard">
-                    <Dashboard />
-                </Route>
+                <Route path="/" exact element={<Home isLoggedIn={isLoggedIn} />} />                                    
+                <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />                                    
+                <Route path="/register" element={<Register />} />                    
+                <Route path="/dashboard" element={<Dashboard />} />                    
             </Routes>
         </Router>
     );
