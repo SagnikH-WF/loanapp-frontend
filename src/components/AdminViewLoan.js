@@ -56,12 +56,13 @@ export default function AdminViewLoan() {
                                 <td>{x.loanId}</td>
                                 <td>{x.loanType}</td>
                                 <td>{x.durationInYears}</td>
-                                <td><Link
+                                <td><button type="button" class="btn btn-light"><Link
                                       to={
                                         "/adminViewLoan/Edit/"+x.loanId
                                       }>
                                         Edit
                                     </Link>
+                                    </button>
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger" 
