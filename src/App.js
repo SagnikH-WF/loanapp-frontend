@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard";
 import UserApplyLoanForm from "./components/UserLoanApplyForm";
 import LoanList from "./components/LoanList";
 import ItemList from "./components/ItemList";
+import AdminDashboard from "./components/AdminDashboard";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +25,7 @@ function App() {
 				<Route path="/applyLoan" element={<UserApplyLoanForm />} />
 				<Route path="/viewLoans" element={<LoanList />} />
 				<Route path="/viewItems" element={<ItemList />} />
+				<Route path="/adminDashboard" element={<AdminDashboard />} />
 			</Routes>
 		</Router>
 	);
