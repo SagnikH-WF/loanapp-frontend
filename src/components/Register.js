@@ -1,61 +1,69 @@
 import React, { useState } from 'react';
 import './Register.css'; 
 import axios from 'axios';
-// import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Register() {
 
-    const baseURL = "http://localhost:8080/employee";
-    // const navigate = useNavigate();
-  const [employee, setEmployee] = useState({
-    employeeId: '',
-    password: '',
-    employeeName: '',
-    dateOfBirth: '',
-    dateOfJoining: '',
-    designation: '',
-    department: '',
-    gender: 'male'// Default value
-  });
+    const baseURL = "http://localhost:8090/employee";
+    const navigate = useNavigate();
+    const [employeeId, setEmployeeId] = useState('');
+    const [password, setPassword] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [dateOfJoining, setDateOfJoining] = useState('');
+    const [department, setDepartment] = useState('');
+    const [designation, setDesignation] = useState('');
+    const [name, setName] = useState('');
+    const [gender, setGender] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setEmployee({ ...employee, [name]: value });
-  };
+    const handleEmployeeIdChange = (event) => {      
+      setEmployeeId(event.target.value);
+    };
+  
+    const handleNameChange = (event) => {
+      setName(event.target.value);
+    };
+  
+    const handleDepartmentChange = (event) => {
+      setDepartment(event.target.value);
+    };
+    const handleDesignationChange = (event) => {
+      setDesignation(event.target.value);
+    };
+    const handleGenderChange = (event) => {
+      setGender(event.target.value);
+    };
+    const handleDateOfBirthChange = (event) => {
+      setDateOfBirth(event.target.value);
+    };
+    const handleDateOfJoiningChange = (event) => {
+      setDateOfJoining(event.target.value);
+    };
+    const handlePasswordChange = (event) => {
+      setPassword(event.target.value);
+    };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-        .post(baseURL,{
-            employee_id : employee.employeeId,
-            password : employee.password,
-            date_of_birth: employee.dateOfBirth,
-            date_of_joining: employee.dateOfJoining,
-            department: employee.department,
-            designation: employee.designation,
-            employee_name: employee.employeeName,
-            gender: employee.gender
-        })
-        .then((response)=>{
-            alert('Employee added successfully');
-        })
-        .catch((error)=>{
-            alert("error=="+error);
-        });
-    
-    
-    // Reset the form
-    setEmployee({
-      employeeId: '',
-      password: '',
-      employeeName: '',
-      dateOfBirth: '',
-      dateOfJoining: '',
-      designation: '',
-      department: '',
-      gender: 'male',
-    });
-  };
+    const requestBody = {
+      employeeId : employeeId,
+      password : password,
+      dateOfBirth: dateOfBirth,
+      dateOfJoining: dateOfJoining,
+      department: department,
+      designation: designation,
+      name: name,
+      gender: gender
+    };
+    try {
+      const response = await axios.post(baseURL, requestBody);
+      console.log(requestBody);
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+        
 
   return (
     <div>
@@ -69,8 +77,8 @@ function Register() {
             type="text"
             id="employeeId"
             name="employeeId"
-            value={employee.employeeId}
-            onChange={handleChange}
+            value={employeeId}
+            onChange={handleEmployeeIdChange}
             className="input-field"
             required
           />
@@ -84,23 +92,23 @@ function Register() {
             type="password"
             id="password"
             name="password"
-            value={employee.password}
-            onChange={handleChange}
+            value={password}
+            onChange={handlePasswordChange}
             className="input-field"
             required
           />
         </div>
 
         <div className="form-group">
-          <label className="label" htmlFor="employeeName">
+          <label className="label" htmlFor="name">
             Employee Name
           </label>
           <input
             type="text"
-            id="employeeName"
-            name="employeeName"
-            value={employee.employeeName}
-            onChange={handleChange}
+            id="name"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
             className="input-field"
             required
           />
@@ -114,8 +122,8 @@ function Register() {
             type="date"
             id="dateOfBirth"
             name="dateOfBirth"
-            value={employee.dateOfBirth}
-            onChange={handleChange}
+            value={dateOfBirth}
+            onChange={handleDateOfBirthChange}
             className="input-field"
             required
           />
@@ -129,8 +137,8 @@ function Register() {
             type="date"
             id="dateOfJoining"
             name="dateOfJoining"
-            value={employee.dateOfJoining}
-            onChange={handleChange}
+            value={dateOfJoining}
+            onChange={handleDateOfJoiningChange}
             className="input-field"
             required
           />
@@ -144,8 +152,8 @@ function Register() {
             type="text"
             id="designation"
             name="designation"
-            value={employee.designation}
-            onChange={handleChange}
+            value={designation}
+            onChange={handleDesignationChange}
             className="input-field"
             required
           />
@@ -159,8 +167,8 @@ function Register() {
             type="text"
             id="department"
             name="department"
-            value={employee.department}
-            onChange={handleChange}
+            value={department}
+            onChange={handleDepartmentChange}
             className="input-field"
             required
           />
@@ -170,15 +178,13 @@ function Register() {
           <label className="label" htmlFor="gender">
             Gender
           </label>
-          <input
-            type="text"
-            id="gender"
-            name="gender"
-            value={employee.gender}
-            onChange={handleChange}
-            className="input-field"
-            required
-          />
+          <select id="gender" onChange={handleGenderChange}>
+          <option disabled selected>
+						Please Select a Value
+					</option>
+            <option value={"M"} key={"M"}>M</option>
+            <option value={"F"} key={"F"}>F</option>
+          </select>
         </div>
         <div className="form-group">
           <button type="submit" className="submit-button">

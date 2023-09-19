@@ -153,7 +153,7 @@ const LoanApplyForm = () => {
 
 			<form onSubmit={handleSubmitApplyLoan}>
 				<label htmlFor="defaultInput">Employee Id:</label>
-				<div class="defaultInput">{employeeId}</div>
+				<div class="defaultInput">{employeeId}</div>src/components/UserLoanApplyForm.js
 
 				<label htmlFor="categ">Item Category:</label>
 				<select id="categ" onChange={handleSelectedCategoryChange}>

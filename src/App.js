@@ -24,6 +24,7 @@ function App() {
 				<Route path="/applyLoan" element={<UserApplyLoanForm />} />
 				<Route path="/viewLoans" element={<LoanList />} />
 				<Route path="/viewItems" element={<ItemList />} />
+				
 			</Routes>
 		</Router>
 	);
