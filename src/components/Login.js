@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './Login.css'
 
-function LoginPage() {
+function LoginPage(props) {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -31,6 +31,9 @@ function LoginPage() {
       // Redirect the user to a protected route
       // Example: history.push('/dashboard');
       alert(response.data.message);
+
+      //added for logged in state management at layout level
+      props.handleLogin(true);
       navigate("/dashboard");
     } catch (err) {
       console.log(err.response.data.message); //TODO: contains the error message from the backend, display it
