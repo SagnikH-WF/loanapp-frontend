@@ -9,6 +9,7 @@ import LoanList from "./components/LoanList";
 import ItemList from "./components/ItemList";
 import EmployeeList from "./components/EmployeeList";
 import AdminDashboard from "./components/AdminDashboard";
+import AdminLoginPage from "./components/AdminLoginPage";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,6 +29,7 @@ function App() {
 				<Route path="/viewItems" element={<ItemList />} />				
 				<Route path="/admin/employeeList" element={<EmployeeList />} />				
 				<Route path="/admin/dashboard" element={<AdminDashboard />} />
+				<Route path="/admin/login" element={<AdminLoginPage />} />
 			</Routes>
 		</Router>
 	);
