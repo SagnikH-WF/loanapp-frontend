@@ -66,7 +66,7 @@ export default function AdminViewLoan() {
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-danger" 
-                                    onClick={()=>handleDelete(x.loanId)}>Delete</button>
+                                    onClick={()=>handleDelete(x.loanId)}><Link className="text-reset">Delete</Link></button>
                                 </td>
                             </tr>
                         ))

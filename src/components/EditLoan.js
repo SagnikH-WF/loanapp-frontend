@@ -30,6 +30,7 @@ export default function EditLoan() {
     e.preventDefault();
     axios
         .put(baseURL+id,{
+            loanId:loanId,
             loanType:loanType,
             durationInYears: duration
         })
@@ -62,7 +63,8 @@ export default function EditLoan() {
           id="LoanType"
           name="LoanType"
           value={loanType}
-          onChange={(e) => setLoanType(e.target.value)}
+        //   onChange={(e) => setLoanType(e.target.value)}
+        readOnly
           required
         /><br /><br />
         <label htmlFor="Duration">Duration (in years):</label>
