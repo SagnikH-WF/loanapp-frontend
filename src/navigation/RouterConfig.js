@@ -18,8 +18,9 @@ function RouterConfig({handleLogin}) {
           <Route path="/" exact element={<Home />} />
           <Route
             path="/login"
-            element={<Login handleLogin={handleLogin} />}
+            element={<Login role={"user"} />}
           />
+          <Route path="/admin/login" element={<Login role={"admin"} />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/applyLoan" element={<UserApplyLoanForm />} />
           <Route path="/viewLoans" element={<LoanList />} />

@@ -13,7 +13,7 @@ const Layout = (props) => {
 		<div>
 			<Navigation isLoggedIn={isLoggedIn}/>
 			{/* <div>{props.children}</div>			 */}
-      <RouterConfig handleLogin={handleLogin}/>
+      		<RouterConfig handleLogin={handleLogin}/>
 		</div>
 	);
 };

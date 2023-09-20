@@ -9,10 +9,14 @@ function Home() {
     navigate("/login");
   }
 
+  const handleLoginAsAdmin = () => {
+	navigate("/admin/login");
+  }
+
 	return (
 		<div className="home-container">
 			<div className="centered-buttons">
-				<button className="login-button">Login as Admin</button>
+				<button className="login-button" onClick={handleLoginAsAdmin}>Login as Admin</button>
 				<button className="login-button" onClick={handleLoginAsUser}>
 					Login as User
 				</button>

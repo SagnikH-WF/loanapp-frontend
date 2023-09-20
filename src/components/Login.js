@@ -19,7 +19,7 @@ function LoginPage(props) {
     console.log('Data being sent to the backend:', requestData); // Log the data
 
     try {      
-      const response = await axios.post('http://localhost:8090/employee/login', requestData);
+      const response = await axios.post(`http://localhost:8090/employee/${props.role}/login`, requestData);
       console.log(response);
       sessionStorage.setItem("employeeId", response.data.employeeId);
       sessionStorage.setItem("designation", response.data.designation);
@@ -34,6 +34,7 @@ function LoginPage(props) {
 
       //added for logged in state management at layout level
       props.handleLogin(true);
+      sessionStorage.setItem("isLoggedIn", true);
       navigate("/dashboard");
     } catch (err) {
       console.log(err.response.data.message); //TODO: contains the error message from the backend, display it
@@ -43,7 +44,7 @@ function LoginPage(props) {
 
   return (
     <div className="login-container">
-      <h2>Login Page</h2>
+      <h2>{props.role} Login Page</h2>
       <form onSubmit={handleLogin} className="login-form">
         <div>
           <label>userId:</label>

@@ -2,7 +2,9 @@ import React from 'react';
 import "./Navigation.css";
 import { useNavigate } from 'react-router-dom';
 
-function Navbar({ isLoggedIn }) {
+function Navbar() {
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  console.log(isLoggedIn);
   const navigate = useNavigate();
 
   const handleSwitchingToDashboard = () => {
