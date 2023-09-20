@@ -11,9 +11,21 @@ const EditEmployee = () => {
 
   const getEmployee = async () => {
     try {
-      const response = await axios.get(baseUrl);
-      console.log(response.data);
-      setEditedEmployee(response.data);
+      let response = await axios.get(baseUrl);
+      response = response.data;
+      console.log(response);
+      // setEditedEmployee(response.data);
+      const employeeDetails = {
+        employeeId: response.employeeId,
+        name: response.name,
+        password: response.password,
+        designation: response.designation,
+        department: response.department,
+        gender: response.gender,
+        dateOfBirth: response.dateOfBirth,
+        dateOfJoining: response.dateOfJoining
+      }
+      setEditedEmployee(employeeDetails);
     } catch(e) {
       console.log(e);
     }
@@ -31,6 +43,7 @@ const EditEmployee = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(editedEmployee);
     // onSave(editedEmployee); //send from parent, what to do
     try {
       const response = await axios.put(baseUrl, editedEmployee);
