@@ -8,7 +8,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleSwitchingToDashboard = () => {
-    navigate("/dashboard");
+    navigate(`/${sessionStorage.getItem("role")}/dashboard`);
   };
 
   return (

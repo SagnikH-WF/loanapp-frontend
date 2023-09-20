@@ -20,7 +20,7 @@ function AdminDashboard() {
 			<div className="container">
 				<div className="dashboard">
 					<h3>Loan Management Applicaton</h3>
-					<h3>User Dashboard</h3>
+					<h3>Admin Dashboard</h3>
 					<div className="dashboard-button-container">
 						<button onClick={navigateToEmployeeList}>
 							Customer Data Management

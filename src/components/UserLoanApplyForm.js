@@ -99,7 +99,7 @@ const LoanApplyForm = () => {
 		try {
 			if (selectedMake) {
 				const response = await axios.get(
-					`http://localhost:8090/item/allItems?category=${selectedCategory}&make=${selectedMake}`
+					`http://localhost:8090/item/category&make?category=${selectedCategory}&make=${selectedMake}`
 				);
 				console.log("all items response", response.data);
 				items = response.data;
@@ -136,7 +136,7 @@ const LoanApplyForm = () => {
 			console.log(response);
 
 			alert(response.data); //TODO: put a more meaningful message (update message from backend)
-			navigate("/dashboard");
+			navigate("/user/dashboard");
 		} catch (e) {
 			console.log("Error", e);
 		}

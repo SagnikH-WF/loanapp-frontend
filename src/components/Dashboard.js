@@ -6,13 +6,13 @@ function Dashboard() {
 	const navigate = useNavigate();
 
 	const navigateToViewLoan = () => {
-		navigate("/viewLoans");
+		navigate("/user/viewLoans");
 	};
 	const navigateToApplyLoan = () => {
-		navigate("/applyLoan");
+		navigate("/user/applyLoan");
 	};
 	const navigateToPurchasedItem = () => {
-		navigate("/viewItems");
+		navigate("/user/viewItems");
 	};
 
 	return (

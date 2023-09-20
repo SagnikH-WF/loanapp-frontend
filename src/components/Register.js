@@ -59,6 +59,8 @@ function Register() {
       const response = await axios.post(baseURL, requestBody);
       console.log(requestBody);
       console.log(response);
+      alert("employee saved");
+      navigate("/admin/employeeList");
     } catch (e) {
       console.log(e);
     }

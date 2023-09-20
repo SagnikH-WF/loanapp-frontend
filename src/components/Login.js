@@ -33,11 +33,14 @@ function LoginPage(props) {
       alert(response.data.message);
 
       //added for logged in state management at layout level
-      props.handleLogin(true);
+      // props.handleLogin(true);
       sessionStorage.setItem("isLoggedIn", true);
-      navigate("/dashboard");
+      sessionStorage.setItem("role", props.role);
+      navigate(`/${props.role}/dashboard`);
     } catch (err) {
+      console.log(err);
       console.log(err.response.data.message); //TODO: contains the error message from the backend, display it
+      alert(err.response.data.message);
       setError('Login failed. Please check your credentials.');
     }
   };

@@ -11,27 +11,24 @@ import EmployeeList from "../components/EmployeeList";
 import AdminDashboard from "../components/AdminDashboard";
 import EditEmployee from "../components/EditEmployee";
 
-function RouterConfig({handleLogin}) {
-  return (
-    <>
-      <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route
-            path="/login"
-            element={<Login role={"user"} />}
-          />
-          <Route path="/admin/login" element={<Login role={"admin"} />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/applyLoan" element={<UserApplyLoanForm />} />
-          <Route path="/viewLoans" element={<LoanList />} />
-          <Route path="/viewItems" element={<ItemList />} />				
-          <Route path="/admin/register" element={<Register />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/employeeList" element={<EmployeeList />} />				
-          <Route path="/admin/edit/:id" element={<EditEmployee />} />
-        </Routes>
-    </>
-  )
+function RouterConfig({ handleLogin }) {
+	return (
+		<>
+			<Routes>
+				<Route path="/" exact element={<Home />} />
+				<Route path="/login" element={<Login role={"user"} />} />
+				<Route path="/user/dashboard" element={<Dashboard />} />
+				<Route path="/user/applyLoan" element={<UserApplyLoanForm />} />
+				<Route path="/user/viewLoans" element={<LoanList />} />
+				<Route path="/user/viewItems" element={<ItemList />} />
+				<Route path="/admin/login" element={<Login role={"admin"} />} />
+				<Route path="/admin/register" element={<Register />} />
+				<Route path="/admin/dashboard" element={<AdminDashboard />} />
+				<Route path="/admin/employeeList" element={<EmployeeList />} />
+				<Route path="/admin/edit/:id" element={<EditEmployee />} />
+			</Routes>
+		</>
+	);
 }
 
 export default RouterConfig;
