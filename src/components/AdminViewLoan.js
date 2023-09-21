@@ -4,76 +4,70 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AdminViewLoan() {
+	const [loanList, setLoanList] = useState([]);
+	const baseURL = "http://localhost:8090/loan";
+	const navigate = useNavigate();
 
-    const [loan,setLoan] = useState([]);
-    const baseURL = "http://localhost:9090/loan";
-    const navigate = useNavigate();
-
-    const setLoanData = ()=>{
-        axios.get(baseURL)
-            .then((response)=>{
-                setLoan(response.data);
-            })
-            .catch((error)=>{
-                alert("Error occured while loading data "+error);
-            });
-    };
+	const getAllLoans = async () => {
+    try {
+      const response = await axios.get(baseURL);
+      console.log(response);
+      setLoanList(response.data);
+    } catch(e) {
+      console.log(e);
+    }
+  }
 
 	useEffect(() => {
-		setLoanData();
+		getAllLoans();
 	}, []);
 
-    const handleDelete = async (loanId) => {
-        try {
-           
-           await axios.delete(`http://localhost:9090/loan/${loanId}`);
+  const handleAddLoan = () => {
+    navigate("/admin/loan/register");
+  }
 
-           setLoan((prevData) => prevData.filter((row) => row.loanId !== loanId));
-           alert(`${loanId} deleted successfully`);
-        } catch (error) {
-          // Handle any errors (e.g., display an error message)
-          console.error('Error deleting loan:', error);
-        }
-      };
+	// const handleDelete = async (loanId) => {
+	// 	try {
+	// 		await axios.delete(`http://localhost:9090/loan/${loanId}`);
 
-  return (
-    <div className='container'>
-        <h3>Loan Card Details</h3>
-        <div className='table'>
-            <table className='table table-info table-striped-columns'>
-                <thead>
-                    <tr>
-                        <th>LoanId</th>
-                        <th>Loan Type</th>
-                        <th>Duration</th>
-                        <th colSpan={2} className="align-middle">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        loan.map((x,i)=>(
-                            <tr>
-                                <td>{x.loanId}</td>
-                                <td>{x.loanType}</td>
-                                <td>{x.durationInYears}</td>
-                                <td><button type="button" class="btn btn-light"><Link
-                                      to={
-                                        "/adminViewLoan/Edit/"+x.loanId
-                                      }>
-                                        Edit
-                                    </Link>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger" 
-                                    onClick={()=>handleDelete(x.loanId)}><Link className="text-reset">Delete</Link></button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-  )
+	// 		setLoan((prevData) => prevData.filter((row) => row.loanId !== loanId));
+	// 		alert(`${loanId} deleted successfully`);
+	// 	} catch (error) {
+	// 		// Handle any errors (e.g., display an error message)
+	// 		console.error("Error deleting loan:", error);
+	// 	}
+	// };
+
+	return (
+		<div className="loan-list-container">
+			<h2>Loan Card Details</h2>
+      <button className="add-button" onClick={handleAddLoan}>
+        Add Loan Data
+      </button>
+			<div className="table">
+				<table className="loan-table">
+					<thead>
+						<tr>
+							<th>LoanId</th>
+							<th>Loan Type</th>
+							<th>Duration</th>
+							<th></th>
+              <th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{loanList.map((x, i) => (
+							<tr>
+								<td>{x.loanId}</td>
+								<td>{x.loanType}</td>
+								<td>{x.durationInYears}</td>
+								<td><Link to={`/admin/loan/edit/${x.loanId}`}>Edit</Link></td>
+                <td><Link>Delete</Link></td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	);
 }

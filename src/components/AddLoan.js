@@ -3,70 +3,74 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 function AddLoan() {
-  const [loanId, setLoanId] = useState('');
-  const [loanType, setLoanType] = useState('');
-  const [duration, setDuration] = useState('');
-  const baseURL = "http://localhost:9090/loan";
+
+  const [loan, setLoan] = useState({});
+  const baseURL = "http://localhost:8090/loan";
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-        .post(baseURL,{
-            loanId : loanId,
-            loanType : loanType,
-            durationInYears: duration
-        })
-        .then((response)=>{
-            alert('Loan added successfully');
-            navigate('/adminViewLoan');
-        })
-        .catch((error)=>{
-            alert("error=="+error);
-        });
-    
+  const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setLoan({ ...loan, [name]: value });
+	};	
 
-    // You can handle form submission logic here
-    // For now, let's just log the form values
-    console.log('Loan ID:', loanId);
-    console.log('Loan Type:', loanType);
-    console.log('Duration:', duration);
-  };
+  const handleSubmit = async (e) => {
+		e.preventDefault();		
+		console.log(loan);
+		try {
+		  const response = await axios.post(baseURL, loan);		  
+		  console.log(response);
+		  alert("loan saved");
+		  navigate("/admin/loanList");
+		} catch (e) {
+		  console.log(e);
+		}
+	};
 
   return (
     <div className='container'>
       <h1>Loan Application Form</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="LoanId">Loan ID:</label>
+        <div className='form-group'>
+        <label htmlFor="loanId">Loan ID:</label>
         <input
           type="text"
-          id="LoanId"
-          name="LoanId"
-          value={loanId}
-          onChange={(e) => setLoanId(e.target.value)}
+          id="loanId"
+          name="loanId"
+          value={loan.loanId}
+          onChange={handleInputChange}
           required
-        /><br /><br />
+        />
+        </div>
 
-        <label htmlFor="LoanType">Loan Type:</label>
+        <div className='form-group'>
+        <label htmlFor="loanType">Loan Type:</label>
         <input
           type="text"
-          id="LoanType"
-          name="LoanType"
-          value={loanType}
-          onChange={(e) => setLoanType(e.target.value)}
+          id="loanType"
+          name="loanType"
+          value={loan.loanType}
+          onChange={handleInputChange}
           required
-        /><br /><br />
-        <label htmlFor="Duration">Duration (in years):</label>
+        />
+        </div>
+
+        <div className='form-group'>
+        <label htmlFor="duration">Duration (in years):</label>
         <input
           type="number"
-          id="Duration"
-          name="Duration"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
+          id="duration"
+          name="durationInYears"
+          value={loan.durationInYears}
+          onChange={handleInputChange}
           required
-        /><br /><br />
+        />
+        </div>
 
-        <input type="submit" value="Add" />
+        <div className="form-group">
+					<button type="submit" className="submit-button">
+						Register
+					</button>
+				</div>
       </form>
     </div>
   );

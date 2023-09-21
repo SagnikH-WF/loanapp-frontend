@@ -13,6 +13,9 @@ import EditEmployee from "../components/EditEmployee";
 import AdminAddItem from "../components/AdminAddItem";
 import AdminEditItem from "../components/AdminEditItem";
 import AdminItemList from "../components/AdminItemList"
+import EditLoan from "../components/EditLoan";
+import AdminViewLoan from "../components/AdminViewLoan";
+import AddLoan from "../components/AddLoan";
 
 function RouterConfig({ handleLogin }) {
 	return (
@@ -32,6 +35,9 @@ function RouterConfig({ handleLogin }) {
         <Route path="/admin/item/register" element={<AdminAddItem />} />
         <Route path="/admin/itemList" element={<AdminItemList />} />
         <Route path="/admin/item/edit/:id" element={<AdminEditItem />} />
+        <Route path="/admin/loan/register" element={<AddLoan />} />
+        <Route path="/admin/loanList" element={<AdminViewLoan />} />
+        <Route path="/admin/loan/edit/:id" element={<EditLoan />} />
 			</Routes>
 		</>
 	);

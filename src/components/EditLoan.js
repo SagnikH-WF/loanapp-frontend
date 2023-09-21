@@ -4,80 +4,93 @@ import {useParams,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 export default function EditLoan() {
-    const param = useParams();
-    const [loanId, setLoanId] = useState('');
-    const [loanType, setLoanType] = useState('');
-    const [duration, setDuration] = useState('');
+
+    const [editedLoan, setEditedLoan] = useState({});
+
+    const params = useParams();    
     const navigate = useNavigate();
-    const [id,setId]=useState(param.id)
-    const baseURL = "http://localhost:9090/loan/";
+    const baseURL = `http://localhost:8090/loan/${params.id}`;
    
+    const getLoan = async () => {
+      try {
+        let response = await axios.get(baseURL);
+        response = response.data;
+        console.log(response);
 
-    useEffect(()=>{
-        axios.get(baseURL+id)
-            .then((response)=>{
-                const loanData = response.data;
-                setLoanId(loanData.loanId);
-                setLoanType(loanData.loanType);
-                setDuration(loanData.duration);
-                console.log(loanData.loanType);
-            }).catch((error)=>{
-                alert("error=="+error);
-            });
-    },[]);
+        const loanDetails = {
+          loanId: response.loanId,
+          durationInYears: response.durationInYears,
+          loanType: response.loanType
+        }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-        .put(baseURL+id,{
-            loanId:loanId,
-            loanType:loanType,
-            durationInYears: duration
-        })
-        .then((response)=>{
-            alert('Updated Successfully');
-            navigate('/adminViewLoan');
-        })
-        .catch((error)=>{
-            alert("error=="+error);
-        });
-    
-     };
+        setEditedLoan(loanDetails);
+      } catch(e) {
+        console.log(e);
+      }
+    }
+    useEffect(()=> {
+      console.log(baseURL);
+      getLoan(params.id);
+    }, [])
+
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setEditedLoan({ ...editedLoan, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log(editedLoan);
+      
+      try {
+        const response = await axios.put(baseURL, editedLoan);
+        console.log(response);
+        alert("Employee loan edited successfully");
+        navigate("/admin/loanList");      
+      } catch (e) {
+        console.log(e);
+      }
+    };
 
     return (
     <div className='container'>
-      <h1>Updating Loan</h1>
-      <form onSubmit={handleSubmit}>
+      <h2>Edit Loan</h2>
+      <form onSubmit={handleSubmit} className='edit-loan-container'>
         <label htmlFor="LoanId">Loan ID:</label>
         <input
           type="text"
           id="LoanId"
           name="LoanId"
-          value={loanId}
+          value={editedLoan.loanId}
           readOnly
-        /><br /><br />
+        />
 
         <label htmlFor="LoanType">Loan Type:</label>
         <input
           type="text"
           id="LoanType"
           name="LoanType"
-          value={loanType}
+          value={editedLoan.loanType}
         //   onChange={(e) => setLoanType(e.target.value)}
         readOnly
           required
-        /><br /><br />
+        />
+
         <label htmlFor="Duration">Duration (in years):</label>
         <input
           type="number"
           id="Duration"
-          name="Duration"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
+          name="durationInYears"
+          value={editedLoan.durationInYears}
+          onChange={handleInputChange}
           required
-        /><br /><br />
+        />
 
-        <input type="submit" value="Update" />
+        <div className="form-group">
+					<button type="submit" className="submit-button">
+            Save Loan
+					</button>
+				</div>
       </form>
     </div>
   );
