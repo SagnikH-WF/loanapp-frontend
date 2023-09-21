@@ -1,0 +1,52 @@
+/* Container styles */
+.admin-add-item-container {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Form styles */
+  .admin-add-item-container form {
+    display: flex; /* Use flexbox to create a row layout */
+    flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+    gap: 10px; /* Add some spacing between input forms */
+  }
+  
+  /* Input styles */
+  .admin-add-item-container input {
+    flex: 1; /* Distribute available space equally between input forms */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Button styles */
+  .admin-add-item-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-add-item-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Center the container on the page */
+  .admin-add-item-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
