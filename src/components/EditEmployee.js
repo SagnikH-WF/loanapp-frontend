@@ -23,7 +23,8 @@ const EditEmployee = () => {
         department: response.department,
         gender: response.gender,
         dateOfBirth: response.dateOfBirth,
-        dateOfJoining: response.dateOfJoining
+        dateOfJoining: response.dateOfJoining,
+        isAdmin: response.isAdmin
       }
       setEditedEmployee(employeeDetails);
     } catch(e) {
@@ -122,6 +123,14 @@ const EditEmployee = () => {
             value={editedEmployee.dateOfJoining}
             onChange={handleInputChange}
           />
+        </div>
+
+        <div>
+          <label htmlFor="isAdmin">Is Admin:</label>
+          <select id="isAdmin" onChange={handleInputChange} name='isAdmin' value={editedEmployee.isAdmin}>
+            <option value={"yes"} key={"Y"}>Y</option>
+            <option value={"no"} key={"N"}>N</option>
+          </select>
         </div>
         <button type="submit">Save</button>
       </form>
