@@ -10,6 +10,9 @@ import ItemList from "../components/ItemList";
 import EmployeeList from "../components/EmployeeList";
 import AdminDashboard from "../components/AdminDashboard";
 import EditEmployee from "../components/EditEmployee";
+import AdminAddItem from "../components/AdminAddItem";
+import AdminEditItem from "../components/AdminEditItem";
+import AdminItemList from "../components/AdminItemList"
 
 function RouterConfig({ handleLogin }) {
 	return (
@@ -22,10 +25,13 @@ function RouterConfig({ handleLogin }) {
 				<Route path="/user/viewLoans" element={<LoanList />} />
 				<Route path="/user/viewItems" element={<ItemList />} />
 				<Route path="/admin/login" element={<Login role={"admin"} />} />
-				<Route path="/admin/register" element={<Register />} />
 				<Route path="/admin/dashboard" element={<AdminDashboard />} />
+				<Route path="/admin/register" element={<Register />} />
 				<Route path="/admin/employeeList" element={<EmployeeList />} />
 				<Route path="/admin/edit/:id" element={<EditEmployee />} />
+        <Route path="/admin/item/register" element={<AdminAddItem />} />
+        <Route path="/admin/itemList" element={<AdminItemList />} />
+        <Route path="/admin/item/edit/:id" element={<AdminEditItem />} />
 			</Routes>
 		</>
 	);

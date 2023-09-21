@@ -9,10 +9,10 @@ function AdminDashboard() {
 		navigate("/admin/employeeList");
 	};
 	const navigateToApplyLoan = () => {
-		navigate("/applyLoan");
+		navigate("/admin/loanList");
 	};
 	const navigateToPurchasedItem = () => {
-		navigate("/viewItems");
+		navigate("/admin/itemList");
 	};
 
 	return (

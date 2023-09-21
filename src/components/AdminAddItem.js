@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 function AdminAddItem() {
   // State to store item details
-  const [item, setItem] = useState({
-    itemId: '',
-    itemCategory: '',
-    itemDescription: '',
-    itemValuation: '',
-    itemStatus: '',
-    itemMake: '',
-  });
+  const navigate = useNavigate();
+  const baseURL = "http://localhost:8090/item";
+  const [item, setItem] = useState({});
 
   // Function to handle input changes
   const handleInputChange = (e) => {
@@ -18,40 +14,23 @@ function AdminAddItem() {
     setItem({ ...item, [name]: value });
   };
 
-  // Function to handle the "Add Item" button click and redirect
-  const handleAddItem = () => {
-    // Check if any of the input fields are empty
-    if (Object.values(item).some((field) => field === '')) {
-      alert('Please fill in all the fields before adding the item.');
-      return; // Do not proceed if any field is empty
-    }
-
-    // Send a POST request to the backend API to add the item
-    axios.post('http://localhost:8080/addItem', item)
-      .then((response) => {
-        console.log('Item added successfully:', response.data);
-        // Clear the input fields after successful addition
-        setItem({
-          itemId: '',
-          itemCategory: '',
-          itemDescription: '',
-          itemValuation: '',
-          itemStatus: '',
-          itemMake: '',
-        });
-
-        // Redirect to another page
-        window.location.href = '/Admin/ItemList'; // Replace with the actual URL
-      })
-      .catch((error) => {
-        console.error('Error adding item:', error);
-      });
-  };
+  const handleSubmit = async (e) => {
+		e.preventDefault();		
+		console.log(item);
+		try {
+		  const response = await axios.post(baseURL, item);
+		  console.log(response);
+		  alert("item saved");
+		  navigate("/admin/itemList");
+		} catch (e) {
+		  console.log(e);
+		}
+	};
 
   return (
     <div>
       <h2>Admin Add Item</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Item ID:</label>
           <input
@@ -88,15 +67,18 @@ function AdminAddItem() {
             onChange={handleInputChange}
           />
         </div>
+
         <div>
-          <label>Issue Status:</label>
-          <input
-            type="text"
-            name="itemStatus"
-            value={item.itemStatus}
-            onChange={handleInputChange}
-          />
+          <label htmlFor="itemStatus">Item Status:</label>
+          <select id="itemStatus" onChange={handleInputChange} name='itemStatus' value={item.itemStatus}>
+          <option disabled selected>
+							Please Select a Value
+						</option>
+            <option value={"Y"} key={"Y"}>Y</option>
+            <option value={"N"} key={"N"}>N</option>
+          </select>
         </div>
+        
         <div>
           <label>Item Make:</label>
           <input
@@ -106,7 +88,7 @@ function AdminAddItem() {
             onChange={handleInputChange}
           />
         </div>
-        <button type="button" onClick={handleAddItem} disabled={Object.values(item).some((field) => field === '')}>
+        <button type="submit" disabled={Object.values(item).some((field) => field === '')}>
           Add Item
         </button>
       </form>
