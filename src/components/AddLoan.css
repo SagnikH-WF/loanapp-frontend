@@ -1,5 +1,5 @@
 /* Container styles */
-.admin-add-item-container {
+.admin-add-loan-container {
     width: 450px;
     margin: 0 auto;
     padding: 20px;
@@ -11,7 +11,7 @@
   
   
   /* Input styles */
-  .admin-add-item-container input {
+  .admin-add-loan-container input {
     flex: 1; /* Distribute available space equally between input forms */
     padding: 8px;
     border: 1px solid #ccc;
@@ -20,7 +20,7 @@
   }
   
   /* Button styles */
-  .admin-add-item-container button {
+  .admin-add-loan-container button {
     padding: 10px;
     background-color: #007bff;
     color: #fff;
@@ -31,7 +31,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .admin-add-item-container button:hover {
+  .admin-add-loan-container button:hover {
     background-color: #0056b3;
   }
   

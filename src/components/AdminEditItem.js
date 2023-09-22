@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import "./AdminEditItem.css";
 
 export default function AdminEditItem({ match }) {
   const params = useParams();
@@ -58,7 +59,7 @@ export default function AdminEditItem({ match }) {
   return (
     <div>
       <h2>Admin Edit Item</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='admin-add-item-container'>
         <div>
           <label>Item ID:</label>
           <input
@@ -79,6 +80,15 @@ export default function AdminEditItem({ match }) {
           />
         </div>
         <div>
+          <label>Item Make:</label>
+          <input
+            type="text"
+            name="itemMake"
+            value={editedItem.itemMake}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
           <label>Item Description:</label>
           <input
             type="text"
@@ -87,6 +97,7 @@ export default function AdminEditItem({ match }) {
             onChange={handleInputChange}
           />
         </div>
+        
         <div>
           <label>Item Valuation:</label>
           <input
@@ -105,15 +116,7 @@ export default function AdminEditItem({ match }) {
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <label>Item Make:</label>
-          <input
-            type="text"
-            name="itemMake"
-            value={editedItem.itemMake}
-            onChange={handleInputChange}
-          />
-        </div>
+        
         <button type="submit">
           Edit Item
         </button>

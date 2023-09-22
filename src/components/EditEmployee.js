@@ -80,15 +80,6 @@ const EditEmployee = () => {
           />
         </div>
         <div>
-          <label>Designation:</label>
-          <input
-            type="text"
-            name="designation"
-            value={editedEmployee.designation}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
           <label>Department:</label>
           <input
             type="text"
@@ -97,6 +88,16 @@ const EditEmployee = () => {
             onChange={handleInputChange}
           />
         </div>
+        <div>
+          <label>Designation:</label>
+          <input
+            type="text"
+            name="designation"
+            value={editedEmployee.designation}
+            onChange={handleInputChange}
+          />
+        </div>
+        
         <div>
           <label>Gender:</label>
           <input

@@ -2,8 +2,7 @@
 
 /* Container styles */
 .admin-add-item-container {
-    width: 80%;
-    max-width: 400px;
+    width: 450px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -12,11 +11,6 @@
     background-color: #fff;
   }
   
-  /* Form styles */
-  .admin-add-item-container form {
-    display: flex;
-    flex-direction: column;
-  }
   
   /* Input styles */
   .admin-add-item-container input {
@@ -43,11 +37,4 @@
     background-color: #0056b3;
   }
   
-  /* Center the container on the page */
-  .admin-add-item-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
   

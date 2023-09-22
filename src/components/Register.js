@@ -46,6 +46,21 @@ function Register() {
 				</div>
 
 				<div className="form-group">
+					<label className="label" htmlFor="name">
+						Employee Name
+					</label>
+					<input
+						type="text"
+						id="name"
+						name="name"
+						value={employee.name}
+						onChange={handleInputChange}
+						className="input-field"
+						required
+					/>
+				</div>
+
+				<div className="form-group">
 					<label className="label" htmlFor="password">
 						Password
 					</label>
@@ -60,20 +75,7 @@ function Register() {
 					/>
 				</div>
 
-				<div className="form-group">
-					<label className="label" htmlFor="name">
-						Employee Name
-					</label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						value={employee.name}
-						onChange={handleInputChange}
-						className="input-field"
-						required
-					/>
-				</div>
+				
 
 				<div className="form-group">
 					<label className="label" htmlFor="dateOfBirth">
@@ -106,21 +108,6 @@ function Register() {
 				</div>
 
 				<div className="form-group">
-					<label className="label" htmlFor="designation">
-						Designation
-					</label>
-					<input
-						type="text"
-						id="designation"
-						name="designation"
-						value={employee.designation}
-						onChange={handleInputChange}
-						className="input-field"
-						required
-					/>
-				</div>
-
-				<div className="form-group">
 					<label className="label" htmlFor="department">
 						Department
 					</label>
@@ -134,6 +121,21 @@ function Register() {
 						required
 					/>
 				</div>
+
+				<div className="form-group">
+					<label className="label" htmlFor="designation">
+						Designation
+					</label>
+					<input
+						type="text"
+						id="designation"
+						name="designation"
+						value={employee.designation}
+						onChange={handleInputChange}
+						className="input-field"
+						required
+					/>
+				</div>				
 
 				<div className="form-group">
 					<label className="label" htmlFor="gender">
@@ -159,7 +161,7 @@ function Register() {
 						onChange={handleInputChange}
 						name="isAdmin"
 					>
-            <option disabled selected>
+            			<option disabled selected>
 							Please Select a Value
 						</option>
 						<option value={"no"} key={"N"}>

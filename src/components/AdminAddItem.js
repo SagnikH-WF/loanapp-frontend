@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import "./AdminAddItem.css";
 
 function AdminAddItem() {
   // State to store item details
@@ -29,7 +30,8 @@ function AdminAddItem() {
 
   return (
     <div>
-      <h2>Admin Add Item</h2>
+    <h2>Admin Add Item</h2>
+    <div className='admin-add-item-container'>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Item ID:</label>
@@ -49,6 +51,17 @@ function AdminAddItem() {
             onChange={handleInputChange}
           />
         </div>
+
+        <div>
+          <label>Item Make:</label>
+          <input
+            type="text"
+            name="itemMake"
+            value={item.itemMake}
+            onChange={handleInputChange}
+          />
+        </div>
+
         <div>
           <label>Item Description:</label>
           <input
@@ -79,19 +92,12 @@ function AdminAddItem() {
           </select>
         </div>
         
-        <div>
-          <label>Item Make:</label>
-          <input
-            type="text"
-            name="itemMake"
-            value={item.itemMake}
-            onChange={handleInputChange}
-          />
-        </div>
+        
         <button type="submit" disabled={Object.values(item).some((field) => field === '')}>
           Add Item
         </button>
       </form>
+    </div>
     </div>
   );
 }
