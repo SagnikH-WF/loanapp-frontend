@@ -23,6 +23,19 @@ const EmployeeList = () => {
     navigate("/admin/register");
   }
 
+  const handleDeleteEmployee = async (employeeId) => {
+    try {
+      const response = await axios.delete(baseUrl + "/" + employeeId);
+      console.log(response);
+      alert(response.data);
+
+      const updatedEmployees = employeeList.filter((employee) => employee.employeeId !== employeeId);
+      setEmployeeList(updatedEmployees);
+    } catch(e) {
+      console.log(e);
+    }
+  };
+
 	useEffect(() => {
     getAllEmployees();
 	}, []);
@@ -58,7 +71,7 @@ const EmployeeList = () => {
               <td>{x.dateOfBirth}</td>
               <td>{x.dateOfJoining}</td>
               <td><Link to={`/admin/edit/${x.employeeId}`}>Edit</Link></td>
-              <td><Link>Delete</Link></td>
+              <td><Link onClick={() => handleDeleteEmployee(x.employeeId)}>Delete</Link></td>
 						</tr>
 					))}			
         </tbody>

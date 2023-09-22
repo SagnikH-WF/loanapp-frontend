@@ -26,17 +26,18 @@ export default function AdminViewLoan() {
     navigate("/admin/loan/register");
   }
 
-	// const handleDelete = async (loanId) => {
-	// 	try {
-	// 		await axios.delete(`http://localhost:9090/loan/${loanId}`);
+	const handleDeleteLoan = async (loanId) => {
+		try {
+      const response = await axios.delete(baseURL + "/" + loanId);
+      console.log(response);
+      alert(response.data);
 
-	// 		setLoan((prevData) => prevData.filter((row) => row.loanId !== loanId));
-	// 		alert(`${loanId} deleted successfully`);
-	// 	} catch (error) {
-	// 		// Handle any errors (e.g., display an error message)
-	// 		console.error("Error deleting loan:", error);
-	// 	}
-	// };
+      const updatedLoans = loanList.filter((loan) => loan.loanId !== loanId);
+      setLoanList(updatedLoans);
+      } catch(e) {
+        console.log(e);
+      }
+		};
 
 	return (
 		<div className="loan-list-container">
@@ -62,7 +63,7 @@ export default function AdminViewLoan() {
 								<td>{x.loanType}</td>
 								<td>{x.durationInYears}</td>
 								<td><Link to={`/admin/loan/edit/${x.loanId}`}>Edit</Link></td>
-                <td><Link>Delete</Link></td>
+                <td><Link onClick={() => handleDeleteLoan(x.loanId)}>Delete</Link></td>
 							</tr>
 						))}
 					</tbody>
