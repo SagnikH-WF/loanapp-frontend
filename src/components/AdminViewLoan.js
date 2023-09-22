@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import "./AdminViewLoan.css";
 export default function AdminViewLoan() {
 
     const [loan,setLoan] = useState([]);
@@ -37,10 +37,9 @@ export default function AdminViewLoan() {
       };
 
   return (
-    <div className='container'>
-        <h3>Loan Card Details</h3>
-        <div className='table'>
-            <table className='table table-info table-striped-columns'>
+    <div className='loan-list-container'>
+        <h1 className="heading">Loan Card Details</h1>
+            <table className='loan-table'>
                 <thead>
                     <tr>
                         <th>LoanId</th>
@@ -74,6 +73,5 @@ export default function AdminViewLoan() {
                 </tbody>
             </table>
         </div>
-    </div>
   )
 }
