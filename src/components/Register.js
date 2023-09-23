@@ -141,8 +141,8 @@ function Register() {
 					<label className="label" htmlFor="gender">
 						Gender
 					</label>
-					<select id="gender" onChange={handleInputChange} name="gender">
-						<option disabled selected>
+					<select id="gender" onChange={handleInputChange} name="gender" required>
+						<option value="" disabled selected>
 							Please Select a Value
 						</option>
 						<option value={"M"} key={"M"}>

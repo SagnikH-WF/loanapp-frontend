@@ -40,6 +40,7 @@ function AdminAddItem() {
             name="itemId"
             value={item.itemId}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div>
@@ -49,6 +50,7 @@ function AdminAddItem() {
             name="itemCategory"
             value={item.itemCategory}
             onChange={handleInputChange}
+            required
           />
         </div>
 
@@ -59,6 +61,7 @@ function AdminAddItem() {
             name="itemMake"
             value={item.itemMake}
             onChange={handleInputChange}
+            required
           />
         </div>
 
@@ -69,6 +72,7 @@ function AdminAddItem() {
             name="itemDescription"
             value={item.itemDescription}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div>
@@ -78,13 +82,14 @@ function AdminAddItem() {
             name="itemValuation"
             value={item.itemValuation}
             onChange={handleInputChange}
+            required
           />
         </div>
 
         <div>
           <label htmlFor="itemStatus">Item Status:</label>
-          <select id="itemStatus" onChange={handleInputChange} name='itemStatus' value={item.itemStatus}>
-          <option disabled selected>
+          <select id="itemStatus" onChange={handleInputChange} name='itemStatus' value={item.itemStatus} required>
+          <option value="" disabled selected>
 							Please Select a Value
 						</option>
             <option value={"Y"} key={"Y"}>Y</option>
