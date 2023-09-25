@@ -15,6 +15,7 @@ export default function AdminViewLoan() {
       setLoanList(response.data);
     } catch(e) {
       console.log(e);
+	  navigate("/error500");
     }
   }
 

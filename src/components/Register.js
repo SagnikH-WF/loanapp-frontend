@@ -12,17 +12,18 @@ function Register() {
 		const { name, value } = e.target;
 		setEmployee({ ...employee, [name]: value });
 	};	
-
+  
 	const handleSubmit = async (e) => {
 		e.preventDefault();		
 		console.log(employee);
-		try {
+		try {      
 		  const response = await axios.post(baseURL, employee);		  
 		  console.log(response);
 		  alert("employee saved");
 		  navigate("/admin/employeeList");
 		} catch (e) {
 		  console.log(e);
+		  navigate("/error500");
 		}
 	};
 

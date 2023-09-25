@@ -2,8 +2,10 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./ItemList.css";
+import { useNavigate } from "react-router-dom";
 
 const ItemList = () => {
+	const navigate =  useNavigate();
 	const [itemList, setItemList] = useState([]);
 
 	useEffect(() => {
@@ -21,6 +23,7 @@ const ItemList = () => {
 			setItemList(response.data);
 		} catch (err) {
 			console.log(err);
+			navigate("/error500");
 		}
 	};
 

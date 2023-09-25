@@ -16,6 +16,8 @@ import AdminItemList from "../components/AdminItemList"
 import EditLoan from "../components/EditLoan";
 import AdminViewLoan from "../components/AdminViewLoan";
 import AddLoan from "../components/AddLoan";
+import NotFound from "../components/NotFound";
+import Error500 from "../components/Error500";
 
 function RouterConfig({ handleLogin }) {
 	return (
@@ -32,12 +34,14 @@ function RouterConfig({ handleLogin }) {
 				<Route path="/admin/register" element={<Register />} />
 				<Route path="/admin/employeeList" element={<EmployeeList />} />
 				<Route path="/admin/edit/:id" element={<EditEmployee />} />
-        <Route path="/admin/item/register" element={<AdminAddItem />} />
-        <Route path="/admin/itemList" element={<AdminItemList />} />
-        <Route path="/admin/item/edit/:id" element={<AdminEditItem />} />
-        <Route path="/admin/loan/register" element={<AddLoan />} />
-        <Route path="/admin/loanList" element={<AdminViewLoan />} />
-        <Route path="/admin/loan/edit/:id" element={<EditLoan />} />
+				<Route path="/admin/item/register" element={<AdminAddItem />} />
+				<Route path="/admin/itemList" element={<AdminItemList />} />
+				<Route path="/admin/item/edit/:id" element={<AdminEditItem />} />
+				<Route path="/admin/loan/register" element={<AddLoan />} />
+				<Route path="/admin/loanList" element={<AdminViewLoan />} />
+				<Route path="/admin/loan/edit/:id" element={<EditLoan />} />
+				<Route path="/error500" element={<Error500 />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
 	);

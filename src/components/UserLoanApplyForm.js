@@ -30,6 +30,7 @@ const LoanApplyForm = () => {
 			itemCategories = response.data;
 		} catch (e) {
 			console.log(e);
+			navigate("/error500");
 		}
 
 		console.log("categories", itemCategories);
@@ -59,6 +60,7 @@ const LoanApplyForm = () => {
 			}
 		} catch (e) {
 			console.log(e);
+			navigate("/error500");
 		}
 
 		setItemMakes(itemMakes);
@@ -106,6 +108,7 @@ const LoanApplyForm = () => {
 			}
 		} catch (e) {
 			console.log(e);
+			navigate("/error500");
 		}
 
 		setItems(items);
@@ -139,6 +142,7 @@ const LoanApplyForm = () => {
 			navigate("/user/dashboard");
 		} catch (e) {
 			console.log("Error", e);
+			navigate("/error500");
 		}
 	};
 

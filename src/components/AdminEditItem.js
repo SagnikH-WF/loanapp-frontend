@@ -33,6 +33,7 @@ export default function AdminEditItem({ match }) {
       setEditedItem(itemDetails);
     } catch(e) {
       console.log(e);
+      navigate("/error500");
     }
   }
 
@@ -53,6 +54,7 @@ export default function AdminEditItem({ match }) {
       navigate("/admin/itemList"); 
     } catch (e) {
       console.log(e);
+      navigate("/error500");
     }
   };
 

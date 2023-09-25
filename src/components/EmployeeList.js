@@ -16,6 +16,7 @@ const EmployeeList = () => {
       setEmployeeList(response.data);
     } catch (e) {
       console.log(e);
+      navigate("/error500");
     }
   }
 
@@ -33,6 +34,7 @@ const EmployeeList = () => {
       setEmployeeList(updatedEmployees);
     } catch(e) {
       console.log(e);
+      navigate("/error500");
     }
   };
 

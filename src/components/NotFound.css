@@ -1,0 +1,21 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .not-found-h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ff5733; /* You can choose your own color */
+  }
+  
+  .not-found-p {
+    font-size: 24px;
+    color: #333;
+  }
+  

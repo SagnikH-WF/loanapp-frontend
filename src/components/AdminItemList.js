@@ -18,6 +18,7 @@ const AdminItemList = () => {
       setItemList(response.data);
     } catch (err) {
       console.log(err);
+      navigate("/error500");
     }
   };
 
@@ -35,6 +36,7 @@ const AdminItemList = () => {
       setItemList(updatedItems);
     } catch(e) {
       console.log(e);
+      navigate("/error500");
     }
   };
 

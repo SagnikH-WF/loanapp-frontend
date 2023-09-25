@@ -2,8 +2,10 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "./LoanList.css";
+import { useNavigate } from "react-router-dom";
 
 const LoanList = () => {
+	const navigate = useNavigate();
 	const [loanList, setLoanList] = useState([]);
 
 	useEffect(() => {
@@ -21,6 +23,7 @@ const LoanList = () => {
 			setLoanList(response.data);
 		} catch (err) {
 			console.log(err);
+			navigate("/error500");
 		}
 	};
 

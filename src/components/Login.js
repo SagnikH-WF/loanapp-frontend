@@ -41,7 +41,7 @@ function LoginPage(props) {
       console.log(err);
       console.log(err.response.data.message); //TODO: contains the error message from the backend, display it
       alert(err.response.data.message);
-      setError('Login failed. Please check your credentials.');
+      setError('Login failed. Please check your credentials.');      
     }
   };
 

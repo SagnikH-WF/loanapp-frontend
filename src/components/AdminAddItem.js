@@ -24,7 +24,8 @@ function AdminAddItem() {
 		  alert("item saved");
 		  navigate("/admin/itemList");
 		} catch (e) {
-		  console.log(e);
+      console.log(e);
+      navigate("/error500");
 		}
 	};
 

@@ -23,6 +23,7 @@ function AddLoan() {
       alert("loan saved");
       navigate("/admin/loanList");
     } catch (e) {
+      navigate("/error500");
       console.log(e);
     }
   };

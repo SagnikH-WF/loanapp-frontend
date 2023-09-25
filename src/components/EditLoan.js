@@ -27,6 +27,7 @@ export default function EditLoan() {
       setEditedLoan(loanDetails);
     } catch (e) {
       console.log(e);
+      navigate("/error500");
     }
   }
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function EditLoan() {
       navigate("/admin/loanList");
     } catch (e) {
       console.log(e);
+      navigate("/error500");
     }
   };
 

@@ -29,6 +29,7 @@ const EditEmployee = () => {
       setEditedEmployee(employeeDetails);
     } catch(e) {
       console.log(e);
+      navigate("/error500");
     }
   }
 
@@ -53,6 +54,7 @@ const EditEmployee = () => {
       navigate("/admin/employeeList");      
     } catch (e) {
       console.log(e);
+      navigate("/error500");
     }
   };
 
