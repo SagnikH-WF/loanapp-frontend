@@ -1,5 +1,6 @@
 /* itemList.css */
 
+/* Base styles */
 .item-list-container {
   text-align: center;
   margin: 20px auto; /* Add margin to create a gap */
@@ -45,21 +46,66 @@
   background-color: #ffffff; /* White background for odd rows */
 }
 
-/* Add media queries for responsiveness */
-@media (max-width: 768px) {
+/* Media query for smaller screens */
+@media screen and (max-width: 450px) {
   .item-list-container {
     padding: 10px;
   }
 
   .heading {
     font-size: 20px;
+    margin-bottom: 30px; /* Adjust margin for smaller screens */
   }
 
   .employee-info {
     font-size: 14px;
+    margin-bottom: 40px; /* Adjust margin for smaller screens */
   }
 
   .item-table th, .item-table td {
     font-size: 14px;
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+}
+
+/* Media query for medium-sized screens */
+@media screen and (min-width: 451px) and (max-width: 1024px) {
+  .item-list-container {
+    margin: 10px auto; /* Adjust margin for medium-sized screens */
+  }
+
+  .heading {
+    font-size: 22px;
+    margin-bottom: 50px; /* Adjust margin for medium-sized screens */
+  }
+
+  .employee-info {
+    font-size: 16px;
+    margin-bottom: 50px; /* Adjust margin for medium-sized screens */
+  }
+
+  .item-table th, .item-table td {
+    font-size: 16px;
+  }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1025px) {
+  .item-list-container {
+    margin: 20px auto; /* Restore original margin for larger screens */
+  }
+
+  .heading {
+    font-size: 24px;
+    margin-bottom: 60px; /* Restore original margin for larger screens */
+  }
+
+  .employee-info {
+    font-size: 18px;
+    margin-bottom: 60px; /* Restore original margin for larger screens */
+  }
+
+  .item-table th, .item-table td {
+    font-size: 18px;
   }
 }

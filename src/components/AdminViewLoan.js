@@ -52,8 +52,7 @@ export default function AdminViewLoan() {
 							<th>LoanId</th>
 							<th>Loan Type</th>
 							<th>Duration</th>
-							<th></th>
-              <th></th>
+							<th colSpan={2}>Action</th>
 						</tr>
 					</thead>
 					<tbody>

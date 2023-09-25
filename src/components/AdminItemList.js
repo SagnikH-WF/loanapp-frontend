@@ -54,8 +54,7 @@ const AdminItemList = () => {
             <th>Item Make</th>
             <th>Item Category</th>
             <th>Item Valuation</th>
-            <th></th>
-            <th></th>
+            <th colSpan={2}>Action</th>
           </tr>
         </thead>
         <tbody>
