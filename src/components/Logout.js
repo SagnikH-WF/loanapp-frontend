@@ -1,6 +1,5 @@
-// LogoutButton.js
 import React from 'react';
-import './LogoutButton.css'; // Import the CSS file
+import './LogoutButton.css';
 
 const LogoutButton = () => {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn');
