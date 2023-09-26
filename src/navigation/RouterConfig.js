@@ -18,6 +18,8 @@ import AdminViewLoan from "../components/AdminViewLoan";
 import AddLoan from "../components/AddLoan";
 import NotFound from "../components/NotFound";
 import Error500 from "../components/Error500";
+import EmptyItems from "../components/EmptyItems";
+import EmptyLoans from "../components/EmptyLoans";
 
 function RouterConfig({ handleLogin }) {
 	return (
@@ -41,6 +43,8 @@ function RouterConfig({ handleLogin }) {
 				<Route path="/admin/loanList" element={<AdminViewLoan />} />
 				<Route path="/admin/loan/edit/:id" element={<EditLoan />} />
 				<Route path="/error500" element={<Error500 />} />
+				<Route path="/user/emptyitemslist" element={<EmptyItems/>}/>
+				<Route path="/user/emptyloanslist" element={<EmptyLoans/>}/>
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
