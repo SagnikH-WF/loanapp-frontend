@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Navigation.css";
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from './Logout';
 
 function Navbar() {
   const isLoggedIn = sessionStorage.getItem("isLoggedIn");
@@ -18,6 +19,7 @@ function Navbar() {
       </div>
       <div className="user-actions">
       {isLoggedIn && <button className="dashboard-btn" onClick={handleSwitchingToDashboard}>Dashboard</button>}
+      <LogoutButton/>
       </div>
     </nav>
   );
