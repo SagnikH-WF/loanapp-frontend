@@ -22,8 +22,8 @@ const LoanList = () => {
 			console.log(response);
 			setLoanList(response.data);
 		} catch (err) {
-			console.log(err);
-			navigate("/error500");
+			console.log(err.response.data.message);
+			navigate("/user/emptyloanslist");
 		}
 	};
 
