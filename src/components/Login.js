@@ -30,7 +30,7 @@ function LoginPage(props) {
      // localStorage.setItem('token', token);
       // Redirect the user to a protected route
       // Example: history.push('/dashboard');
-    //  alert(response.data.message);
+     alert(response.data.message);
 
       //added for logged in state management at layout level
       // props.handleLogin(true);
@@ -39,7 +39,7 @@ function LoginPage(props) {
       navigate(`/${props.role}/dashboard`);
     } catch (err) {
       console.log(err);
-      // console.log(err.response.data.message); //TODO: contains the error message from the backend, display it
+      console.log(err.response.data.message); //TODO: contains the error message from the backend, display it
       alert(err.response.data.message);
       setError('Login failed. Please check your credentials.');      
     }

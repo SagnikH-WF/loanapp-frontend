@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Navigation.css";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LogoutButton from './Logout';
 
 function Navbar() {
@@ -15,7 +15,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <h1>Loan Management Application</h1>
+        <Link to={"/"} style={{margin: 0}}> <h1>Loan Management Application</h1> </Link>
       </div>
       <div className="user-actions">
       {isLoggedIn && <button className="dashboard-btn" onClick={handleSwitchingToDashboard}>Dashboard</button>}
