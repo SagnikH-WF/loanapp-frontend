@@ -160,8 +160,8 @@ const LoanApplyForm = () => {
 				<div class="defaultInput">{employeeId}</div>
 
 				<label htmlFor="categ">Item Category:</label>
-				<select id="categ" onChange={handleSelectedCategoryChange}>
-					<option disabled selected>
+				<select id="categ" onChange={handleSelectedCategoryChange} required>
+					<option value="" disabled selected>
 						Please Select a Value
 					</option>
 					{itemCategories.map((itemCategory) => (
@@ -170,8 +170,8 @@ const LoanApplyForm = () => {
 				</select>
 
 				<label htmlFor="make">Item Make:</label>
-				<select id="make" onChange={handleSelectedMakeChange}>
-					<option disabled selected>
+				<select id="make" onChange={handleSelectedMakeChange} required>
+					<option value="" disabled selected>
 						Please Select a Value
 					</option>
 					{itemMakes.map((itemMake) => (
@@ -180,8 +180,8 @@ const LoanApplyForm = () => {
 				</select>
 
 				<label htmlFor="description">Item Description:</label>
-				<select id="description" onChange={handleItemDescriptionChange}>
-					<option disabled selected>
+				<select id="description" onChange={handleItemDescriptionChange} required>
+					<option value="" disabled selected>
 						Please Select a Value
 					</option>
 					{items.map((val, idx) => {
