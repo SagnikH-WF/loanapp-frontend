@@ -207,7 +207,7 @@ const EditEmployee = () => {
 
 				<div className="form-group">
 					<button type="submit" className="submit-button">
-						Register
+						Save Employee
 					</button>
 				</div>
 			</form>
