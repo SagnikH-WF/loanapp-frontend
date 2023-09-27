@@ -7,12 +7,26 @@ import "./AdminEditItem.css";
 export default function AdminEditItem({ match }) {
   const params = useParams();
   const navigate = useNavigate();
-  const [editedItem, setEditedItem] = useState({});
+  const [editedItem, setEditedItem] = useState({});  
+  const [errorMessage, setErrorMessage] = useState('');
   
   const baseURL = `http://localhost:8090/item/${params.id}`;
 
+  const checkIfValueisNegative = (value) => {
+    console.log(value);
+    if (parseFloat(value) <= 0) {
+      setErrorMessage('Input cannot be negative and');
+      return true;
+    }
+    setErrorMessage('');
+    return false;
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if(name === 'itemValuation') {      
+      checkIfValueisNegative(value);              
+    }
     setEditedItem({ ...editedItem, [name]: value });
   };
 
@@ -100,7 +114,7 @@ export default function AdminEditItem({ match }) {
             name="itemDescription"
             value={editedItem.itemDescription}
             onChange={handleInputChange}
-            readOnly
+            // readOnly
             required
           />
         </div>
@@ -126,7 +140,8 @@ export default function AdminEditItem({ match }) {
           />
         </div>
         
-        <button type="submit">
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
+        <button type="submit" disabled={!!errorMessage}>
           Save Item
         </button>
       </form>

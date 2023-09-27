@@ -8,9 +8,22 @@ function AddLoan() {
   const [loan, setLoan] = useState({});
   const baseURL = "http://localhost:8090/loan";
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const checkIfValueisNegative = (value) => {
+    console.log(value);
+    if (parseFloat(value) <= 0) {
+      setErrorMessage('Input cannot be negative and zero');
+      return true;
+    }
+    setErrorMessage('');
+    return false;
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if(name === "durationInYears")
+      checkIfValueisNegative(value);
     setLoan({ ...loan, [name]: value });
   };
 
@@ -68,9 +81,10 @@ function AddLoan() {
               required
             />
           </div>
-
+          
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
           <div className="form-group">
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" disabled={!!errorMessage}>
               Add Loan
             </button>
           </div>

@@ -7,6 +7,7 @@ import "./EditLoan.css";
 export default function EditLoan() {
 
   const [editedLoan, setEditedLoan] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   const params = useParams();
   const navigate = useNavigate();
@@ -35,8 +36,22 @@ export default function EditLoan() {
     getLoan(params.id);
   }, [])
 
+  const checkIfValueisNegative = (value) => {
+    console.log(value);
+    if (parseFloat(value) <= 0) {
+      setErrorMessage('Input cannot be negative and zero');
+      return true;
+    }
+    setErrorMessage('');
+    return false;
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if(name === "durationInYears")
+      checkIfValueisNegative(value);
+
     setEditedLoan({ ...editedLoan, [name]: value });
   };
 
@@ -90,8 +105,9 @@ export default function EditLoan() {
             required
           />
 
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
           <div className="form-group">
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" disabled={!!errorMessage}>
               Save Loan
             </button>
           </div>

@@ -8,15 +8,29 @@ function AdminAddItem() {
   const navigate = useNavigate();
   const baseURL = "http://localhost:8090/item";
   const [item, setItem] = useState({});
-  const [itemCategories, setItemCategories] = useState([]);  
+  const [itemCategories, setItemCategories] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     fetchItemCategories();
   }, []);
 
+  const checkIfValueisNegative = (value) => {
+    console.log(value);
+    if (parseFloat(value) <= 0) {
+      setErrorMessage('Input cannot be negative and zero');
+      return true;
+    }
+    setErrorMessage('');
+    return false;
+  }
+
   // Function to handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if(name === 'itemValuation') {      
+      checkIfValueisNegative(value);              
+    }
     setItem({ ...item, [name]: value });
   };
 
@@ -112,7 +126,7 @@ function AdminAddItem() {
           <div>
             <label>Item Value:</label>
             <input
-              type="text"
+              type="number"
               name="itemValuation"
               value={item.itemValuation}
               onChange={handleInputChange}
@@ -131,8 +145,8 @@ function AdminAddItem() {
             </select>
           </div>
 
-
-          <button type="submit" disabled={Object.values(item).some((field) => field === '')}>
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          <button type="submit" disabled={!!errorMessage}>
             Add Item
           </button>
         </form>
