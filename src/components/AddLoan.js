@@ -71,7 +71,7 @@ function AddLoan() {
 
           <div className="form-group">
             <button type="submit" className="submit-button">
-              Register
+              Add Loan
             </button>
           </div>
         </form>

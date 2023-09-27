@@ -22,8 +22,8 @@ const ItemList = () => {
 			console.log(response);
 			setItemList(response.data);
 		} catch (err) {
-			console.log(err);
-			navigate("/error500");
+			console.log(err.response.data.message);
+			navigate("/user/emptyitemslist");
 		}
 	};
 

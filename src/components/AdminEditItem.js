@@ -80,6 +80,7 @@ export default function AdminEditItem({ match }) {
             value={editedItem.itemCategory}
             onChange={handleInputChange}
             readOnly
+            required
           />
         </div>
         <div>
@@ -89,6 +90,7 @@ export default function AdminEditItem({ match }) {
             name="itemMake"
             value={editedItem.itemMake}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div>
@@ -99,6 +101,7 @@ export default function AdminEditItem({ match }) {
             value={editedItem.itemDescription}
             onChange={handleInputChange}
             readOnly
+            required
           />
         </div>
         
@@ -109,6 +112,7 @@ export default function AdminEditItem({ match }) {
             name="itemValuation"
             value={editedItem.itemValuation}
             onChange={handleInputChange}
+            required
           />
         </div>
         <div>
@@ -118,11 +122,12 @@ export default function AdminEditItem({ match }) {
             name="itemStatus"
             value={editedItem.itemStatus}
             onChange={handleInputChange}
+            required
           />
         </div>
         
         <button type="submit">
-          Edit Item
+          Save Item
         </button>
       </form>
     </div>
