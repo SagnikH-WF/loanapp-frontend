@@ -1,36 +1,38 @@
+/* Base styles */
 .main_container {
 	text-align: center;
-	max-width: 400px;
+	max-width: 100%; /* Make it full-width on smaller screens */
 	margin: 0 auto;
-}
-
-.defaultInput {
+	padding: 20px;
+  }
+  
+  .defaultInput {
 	display: flex;
-	justify-content: space-between;
-	margin-bottom: 15px; /* Increase the margin for a larger gap */
-	padding: 10px; /* Add padding for additional spacing within the employee details */
-	border: 1px solid #ddd; /* Add a border for visual separation */
-	border-radius: 5px; /* Add rounded corners to the employee details */
-  background-color: white;
-}
-
-h1 {
+	flex-direction: column; /* Stack input elements vertically on smaller screens */
+	margin-bottom: 20px; /* Increase the margin for a larger gap */
+	padding: 15px; /* Add padding for additional spacing within the elements */
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: white;
+  }
+  
+  h1 {
 	color: #333;
-}
-
-form {
+  }
+  
+  form {
 	text-align: left;
 	margin-top: 20px;
-}
-
-label {
+  }
+  
+  label {
 	display: block;
 	margin-top: 10px;
 	font-weight: bold;
-}
-
-input[type="text"],
-select {
+  }
+  
+  input[type="text"],
+  select {
 	width: 100%;
 	padding: 10px;
 	margin-top: 5px;
@@ -38,22 +40,53 @@ select {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
-}
-
-select {
+  }
+  
+  select {
 	appearance: none;
 	-webkit-appearance: none;
-}
-
-button[type="submit"] {
+  }
+  
+  button[type="submit"] {
 	background-color: #007bff;
 	color: #fff;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-}
-
-button[type="submit"]:hover {
+  }
+  
+  button[type="submit"]:hover {
 	background-color: #0056b3;
-}
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 576px) {
+	.main_container {
+	  padding: 10px; /* Reduce padding for smaller screens */
+	}
+  
+	.defaultInput {
+	  margin-bottom: 15px; /* Reset margin for a smaller gap */
+	}
+  
+	input[type="text"],
+	select {
+	  margin-bottom: 10px; /* Reduce margin for smaller screens */
+	}
+  }
+  
+  /* Media query for medium-sized screens */
+  @media screen and (min-width: 577px) and (max-width: 1024px) {
+	.main_container {
+	  max-width: 600px; /* Adjust max-width for medium-sized screens */
+	}
+  }
+  
+  /* Media query for larger screens */
+  @media screen and (min-width: 1025px) {
+	.main_container {
+	  max-width: 800px; /* Adjust max-width for larger screens */
+	}
+  }
+  

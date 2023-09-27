@@ -1,9 +1,11 @@
-
-h2{
+/* Base styles */
+h2 {
   text-align: center;
 }
+
 .registration-container {
-  width: 450px;
+  width: 100%;
+  max-width: 450px; /* Limit maximum width for larger screens */
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -26,8 +28,6 @@ h2{
   border: 1px solid #ccc;
   border-radius: 3px;
   font-size: 16px;
-  padding:10px 0px 10px 10px;
-
 }
 
 .submit-button {
@@ -38,4 +38,32 @@ h2{
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 576px) {
+  .registration-container {
+    padding: 15px;
+    max-width: 100%; /* Make it full-width on smaller screens */
+  }
+
+  .input-field,
+  .submit-button {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Media query for medium-sized screens */
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+  .registration-container {
+    max-width: 400px; /* Adjust max-width for medium-sized screens */
+  }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1025px) {
+  .registration-container {
+    max-width: 600px; /* Adjust max-width for larger screens */
+  }
 }

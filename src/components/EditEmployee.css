@@ -1,44 +1,84 @@
+/* Default styles for larger screens */
 h2 {
-	text-align: center;
+    text-align: center;
 }
+
 .edit-employee-container {
-	width: 450px;
-	margin: 0 auto;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+    width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .form-group {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .label {
-	display: block;
-	margin-bottom: 5px;
-	font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .input-field {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	font-size: 16px;
-	padding: 10px 0px 10px 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 10px 0px 10px 10px;
 }
 
 .input-field[type="date"] {
-	padding: 10px;
+    padding: 10px;
 }
 
 .submit-button {
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	border-radius: 3px;
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
-	margin-top: 100px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+/* Media query for small screens (max-width) */
+@media screen and (max-width: 768px) {
+    .edit-employee-container {
+        width: 100%;
+        margin: 0;
+    }
+
+    .submit-button {
+        margin-top: 20px;
+    }
+}
+
+/* Media query for medium-sized screens (min-width and max-width) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .edit-employee-container {
+        width: 75%;
+        margin: 0 auto;
+    }
+}
+
+/* Media query for very small screens (max-width) */
+@media screen and (max-width: 576px) {
+    .edit-employee-container {
+        padding: 10px;
+    }
+}
+
+/* Media query for extra small screens (max-width) */
+@media screen and (max-width: 360px) {
+    .edit-employee-container {
+        border-radius: 0;
+    }
+
+    .input-field {
+        font-size: 14px;
+    }
 }

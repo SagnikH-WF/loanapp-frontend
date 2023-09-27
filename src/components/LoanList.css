@@ -1,67 +1,118 @@
 /* LoanList.css */
 
+/* Base styles */
 .loan-list-container {
-	text-align: center;
-	margin: 20px auto; /* Add margin to create a gap */
-	max-width: 800px; /* Adjust the maximum width as needed */
+    text-align: center;
+    margin: 20px auto; /* Add margin to create a gap */
+    max-width: 800px; /* Adjust the maximum width as needed */
 }
 
 .heading {
-	font-size: 24px;
-	margin-bottom: 60px; /* Reduce the margin for a smaller gap */
+    font-size: 24px;
+    margin-bottom: 60px; /* Reduce the margin for a smaller gap */
 }
 
 .employee-info {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 60px; /* Increase the margin for a larger gap */
-	padding: 10px; /* Add padding for additional spacing within the employee details */
-	border: 1px solid #ddd; /* Add a border for visual separation */
-	border-radius: 5px; /* Add rounded corners to the employee details */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px; /* Increase the margin for a larger gap */
+    padding: 10px; /* Add padding for additional spacing within the employee details */
+    border: 1px solid #ddd; /* Add a border for visual separation */
+    border-radius: 5px; /* Add rounded corners to the employee details */
 }
 
 .employee-info p {
-	flex: 1;
-	margin: 0;
-	text-align: center;
+    flex: 1;
+    margin: 0;
+    text-align: center;
 }
 
 .loan-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
 .loan-table th,
 .loan-table td {
-	padding: 10px;
-	border: 1px solid #ddd;
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
 .loan-table tbody tr:nth-child(even) {
-	background-color: #f2f2f2; /* Light grey background for even rows */
+    background-color: #f2f2f2; /* Light grey background for even rows */
 }
 
 .loan-table tbody tr:nth-child(odd) {
-	background-color: #ffffff; /* White background for odd rows */
+    background-color: #ffffff; /* White background for odd rows */
 }
 
-/* Add media queries for responsiveness */
-@media (max-width: 768px) {
-	.loan-list-container {
-		padding: 10px;
-	}
+/* Media query for smaller screens */
+@media screen and (max-width: 576px) {
+    .loan-list-container {
+        padding: 10px;
+    }
 
-	.heading {
-		font-size: 20px;
-	}
+    .heading {
+        font-size: 20px;
+        margin-bottom: 40px; /* Adjust margin for smaller screens */
+    }
 
-	.employee-info {
-		font-size: 14px;
-	}
+    .employee-info {
+        font-size: 14px;
+        margin-bottom: 40px; /* Adjust margin for smaller screens */
+		flex-direction: column;
+    }
 
-	.loan-table th,
-	.loan-table td {
-		font-size: 14px;
-	}
+	
+
+    .loan-table th,
+    .loan-table td {
+        font-size: 14px;
+        padding: 8px; /* Reduce padding for smaller screens */
+    }
+}
+
+/* Media query for medium-sized screens */
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+    .loan-list-container {
+        margin: 10px auto; /* Adjust margin for medium-sized screens */
+    }
+
+    .heading {
+        font-size: 22px;
+        margin-bottom: 50px; /* Adjust margin for medium-sized screens */
+    }
+
+    .employee-info {
+        font-size: 16px;
+        margin-bottom: 50px; /* Adjust margin for medium-sized screens */
+    }
+
+    .loan-table th,
+    .loan-table td {
+        font-size: 16px;
+    }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1025px) {
+    .loan-list-container {
+        margin: 20px auto; /* Restore original margin for larger screens */
+    }
+
+    .heading {
+        font-size: 24px;
+        margin-bottom: 60px; /* Restore original margin for larger screens */
+    }
+
+    .employee-info {
+        font-size: 18px;
+        margin-bottom: 60px; /* Restore original margin for larger screens */
+    }
+
+    .loan-table th,
+    .loan-table td {
+        font-size: 18px;
+    }
 }

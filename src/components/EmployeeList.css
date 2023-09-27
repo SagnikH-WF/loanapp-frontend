@@ -1,67 +1,120 @@
+/* Base styles */
 .employee-list-container {
-	margin: 20px;
-	padding: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	background-color: #fff;
-	text-align: center; /* Center the content horizontally */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center; /* Center the content horizontally */
+    overflow-x: auto; /* Add horizontal scrollbar when table exceeds container width */
 }
 
 .heading {
-	font-size: 24px;
-	margin-bottom: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .employee-table {
-	width: 100%;
-	border-collapse: collapse;
+    width: 100%; /* Make the table width 100% of its container */
+    white-space: nowrap; /* Prevent table cell content from wrapping */
+    border-collapse: collapse;
 }
 
 .employee-table th,
 .employee-table td {
-	padding: 10px;
-	text-align: center;
+    padding: 10px;
+    text-align: center;
 }
 
 .employee-table th {
-	background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .employee-table tr:nth-child(even) {
-	background-color: #f5f5f5;
+    background-color: #f5f5f5;
 }
 
 .employee-table tr:hover {
-	background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 /* Style the Edit and Delete links */
 .edit-link,
 .delete-link {
-	color: blue;
-	cursor: pointer;
-	text-decoration: underline;
-	margin: 0 5px;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+    margin: 0 5px;
 }
 
 .edit-link:hover,
 .delete-link:hover {
-	color: darkblue;
+    color: darkblue;
 }
 
 .add-button {
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	border-radius: 3px;
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
-	margin-bottom: 20px; /* Add spacing below the button */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Add spacing below the button */
 }
 
 /* Hover effect */
 .add-button:hover {
-	background-color: #0056b3;
+    background-color: #0056b3;
+}
+
+/* Media query for small screens */
+@media screen and (max-width: 576px) {
+    .employee-list-container {
+        padding: 10px;
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 8px;
+    }
+
+    .add-button {
+        padding: 8px 16px;
+    }
+}
+
+/* Media query for medium-sized screens */
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+    .employee-list-container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 8px;
+    }
+
+    .add-button {
+        padding: 8px 16px;
+    }
+}
+
+/* Media query for larger screens */
+@media screen and (min-width: 1025px) {
+    .employee-list-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .employee-table th,
+    .employee-table td {
+        padding: 10px;
+    }
+
+    .add-button {
+        padding: 10px 20px;
+    }
 }

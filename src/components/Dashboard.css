@@ -74,17 +74,45 @@ p {
 	background-color: #0056b3;
 }
 
+/* Existing CSS */
+
 @media (max-width: 600px) {
-	.container {
-		padding: 10px;
-	}
+    .container {
+        padding: 10px;
+    }
 
-	nav {
-		text-align: center;
-	}
+    nav {
+        text-align: center;
+    }
 
-	nav a {
-		display: block;
-		margin-bottom: 10px;
+    nav a {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .dashboard-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+	.dashboard-button-container{
+		flex-direction: column;
 	}
+}
+
+/* Add a media query for screens between 601px and 900px wide */
+@media (min-width: 601px) and (max-width: 900px) {
+    .container {
+        max-width: 600px; /* Adjust the container width for medium-sized screens */
+    }
+
+    .dashboard-button-container {
+        flex-wrap: wrap; /* Allow button containers to wrap to the next line if necessary */
+    }
+}
+
+/* Add a media query for screens larger than 900px */
+@media (min-width: 901px) {
+    .container {
+        max-width: 800px; /* Reset the container width for larger screens */
+    }
 }
