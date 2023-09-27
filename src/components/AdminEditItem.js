@@ -79,6 +79,7 @@ export default function AdminEditItem({ match }) {
             name="itemCategory"
             value={editedItem.itemCategory}
             onChange={handleInputChange}
+            readOnly
           />
         </div>
         <div>
@@ -97,6 +98,7 @@ export default function AdminEditItem({ match }) {
             name="itemDescription"
             value={editedItem.itemDescription}
             onChange={handleInputChange}
+            readOnly
           />
         </div>
         
