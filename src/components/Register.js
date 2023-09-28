@@ -11,20 +11,42 @@ function Register() {
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		setEmployee({ ...employee, [name]: value });
-	};	
-  
+	};
+
 	const handleSubmit = async (e) => {
-		e.preventDefault();		
+		e.preventDefault();
+		const currentDate = new Date();
+		const birthDate = new Date(employee.dateOfBirth);
+		const joinDate = new Date(employee.dateOfJoining);
+
+		// Calculate the age based on the difference between birthDate and currentDate
+		const ageInMilliseconds = currentDate - birthDate;
+		const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+
+		if (birthDate > currentDate) {
+			alert("Date of birth cannot be greater than today.");
+			return;
+		}
+
+		if (ageInYears < 18) {
+			alert("Age must be at least 18 years.");
+			return;
+		}
+
+		if (joinDate <= birthDate || joinDate > currentDate) {
+			alert("Invalid date of joining.");
+			return;
+		}
 		console.log(employee);
-		try {      
-		  const response = await axios.post(baseURL, employee);		  
-		  console.log(response);
-		  alert("employee saved");
-		  navigate("/admin/employeeList");
+		try {
+			const response = await axios.post(baseURL, employee);
+			console.log(response);
+			alert("employee saved");
+			navigate("/admin/employeeList");
 		} catch (e) {
 			alert(e.response.data.message);
-		//   console.log(e);
-		//   navigate("/error500");
+			//   console.log(e);
+			//   navigate("/error500");
 		}
 	};
 
@@ -76,8 +98,6 @@ function Register() {
 						required
 					/>
 				</div>
-
-				
 
 				<div className="form-group">
 					<label className="label" htmlFor="dateOfBirth">
@@ -137,13 +157,18 @@ function Register() {
 						className="input-field"
 						required
 					/>
-				</div>				
+				</div>
 
 				<div className="form-group">
 					<label className="label" htmlFor="gender">
 						Gender
 					</label>
-					<select id="gender" onChange={handleInputChange} name="gender" required>
+					<select
+						id="gender"
+						onChange={handleInputChange}
+						name="gender"
+						required
+					>
 						<option value="" disabled selected>
 							Please Select a Value
 						</option>
@@ -158,12 +183,8 @@ function Register() {
 
 				<div className="form-group">
 					<label htmlFor="isAdmin">Is Admin:</label>
-					<select
-						id="isAdmin"
-						onChange={handleInputChange}
-						name="isAdmin"
-					>
-            			<option disabled selected>
+					<select id="isAdmin" onChange={handleInputChange} name="isAdmin">
+						<option disabled selected>
 							Please Select a Value
 						</option>
 						<option value={"no"} key={"N"}>

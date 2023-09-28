@@ -45,6 +45,28 @@ const EditEmployee = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		const currentDate = new Date();
+		const birthDate = new Date(editedEmployee.dateOfBirth);
+		const joinDate = new Date(editedEmployee.dateOfJoining);
+		const ageInMilliseconds = currentDate - birthDate;
+		const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+		console.log("In edited page now");
+		if (birthDate > currentDate) {
+			alert("Date of birth cannot be greater than today.");
+			return;
+		}
+
+		if (ageInYears < 18) {
+			alert("Age must be at least 18 years.");
+			return;
+		}
+
+		if (joinDate <= birthDate || joinDate > currentDate) {
+			alert("Invalid date of joining.");
+			return;
+		}
+		console.log(editedEmployee);
+		console.log("In editEmployee");
 		console.log(editedEmployee);
 		// onSave(editedEmployee); //send from parent, what to do
 		try {
@@ -192,7 +214,12 @@ const EditEmployee = () => {
 
 				<div className="form-group">
 					<label htmlFor="isAdmin">Is Admin:</label>
-					<select id="isAdmin" onChange={handleInputChange} name="isAdmin" value={editedEmployee.isAdmin}>
+					<select
+						id="isAdmin"
+						onChange={handleInputChange}
+						name="isAdmin"
+						value={editedEmployee.isAdmin}
+					>
 						<option disabled selected>
 							Please Select a Value
 						</option>
