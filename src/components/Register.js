@@ -15,13 +15,35 @@ function Register() {
   
 	const handleSubmit = async (e) => {
 		e.preventDefault();		
+		const currentDate = new Date();
+  	const birthDate = new Date(employee.dateOfBirth);
+  const joinDate = new Date(employee.dateOfJoining);
+
+  // Calculate the age based on the difference between birthDate and currentDate
+  const ageInMilliseconds = currentDate - birthDate;
+  const ageInYears = ageInMilliseconds / (365 * 24 * 60 * 60 * 1000);
+
+  if (birthDate > currentDate) {
+    alert("Date of birth cannot be greater than today.");
+    return;
+  }
+
+  if (ageInYears < 18) {
+    alert("Age must be at least 18 years.");
+    return;
+  }
+
+  if (joinDate <= birthDate || joinDate > currentDate) {
+    alert("Invalid date of joining.");
+    return;
+  }
 		console.log(employee);
 		try {      
 		  const response = await axios.post(baseURL, employee);		  
 		  console.log(response);
 		  alert("employee saved");
 		  navigate("/admin/employeeList");
-		} catch (e) {
+		} catch (e) {  
 		  console.log(e);
 		  navigate("/error500");
 		}
