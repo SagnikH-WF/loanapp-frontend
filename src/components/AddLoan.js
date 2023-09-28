@@ -36,8 +36,12 @@ function AddLoan() {
       alert("loan saved");
       navigate("/admin/loanList");
     } catch (e) {
-      navigate("/error500");
-      console.log(e);
+      let errmessage=e.response.data.message;
+      if(errmessage.localeCompare(" already existed.")==0){
+        console.log(errmessage);
+        errmessage=loan.loanType+errmessage;
+      }
+      alert(errmessage);
     }
   };
 

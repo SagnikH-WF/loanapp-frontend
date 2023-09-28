@@ -22,8 +22,9 @@ function Register() {
 		  alert("employee saved");
 		  navigate("/admin/employeeList");
 		} catch (e) {
-		  console.log(e);
-		  navigate("/error500");
+			alert(e.response.data.message);
+		//   console.log(e);
+		//   navigate("/error500");
 		}
 	};
 
