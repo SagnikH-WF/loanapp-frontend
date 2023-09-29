@@ -43,8 +43,8 @@ function RouterConfig({ handleLogin }) {
 				<Route path="/admin/loanList" element={<AdminViewLoan />} />
 				<Route path="/admin/loan/edit/:id" element={<EditLoan />} />
 				<Route path="/error500" element={<Error500 />} />
-				<Route path="/user/emptyitemslist" element={<EmptyItems/>}/>
-				<Route path="/user/emptyloanslist" element={<EmptyLoans/>}/>
+				{/* <Route path="/user/emptyitemslist" element={<EmptyItems/>}/>
+				<Route path="/user/emptyloanslist" element={<EmptyLoans/>}/> */}
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
