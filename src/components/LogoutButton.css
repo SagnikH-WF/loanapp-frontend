@@ -1,17 +1,54 @@
-/* LogoutButton.css */
+/* Default styles for the button container */
+.button-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: flex-end; /* Align items to the right */
+  gap: 10px; /* Add some spacing between buttons */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Default styles for the logout button */
 .logout-button {
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  /* Styles for the button container */
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Media query for smaller screens (max-width: 576px) */
+@media screen and (max-width: 576px) {
   .button-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 50px; /* Adjust the vertical positioning for smaller screens */
   }
-  
+
+  .logout-button {
+    font-size: 14px; /* Adjust the font size for smaller screens */
+    padding: 8px 16px; /* Adjust the padding for smaller screens */
+  }
+}
+
+/* Media query for medium-sized screens (min-width: 577px) and (max-width: 1024px) */
+@media screen and (min-width: 577px) and (max-width: 1024px) {
+  .button-container {
+    top: 10px; /* Adjust the vertical positioning for medium-sized screens */
+  }
+
+  .logout-button {
+    font-size: 16px; /* Adjust the font size for medium-sized screens */
+  }
+}
+
+/* Media query for larger screens (min-width: 1025px) */
+@media screen and (min-width: 1025px) {
+  .button-container {
+    top: 10px; /* Default vertical positioning for larger screens */
+  }
+
+  .logout-button {
+    font-size: 18px; /* Default font size for larger screens */
+  }
+}
